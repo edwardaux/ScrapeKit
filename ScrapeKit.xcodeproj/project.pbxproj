@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF1FD8241681029E00A300C5 /* SKRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BF1FD8221681029E00A300C5 /* SKRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF1FD8251681029E00A300C5 /* SKRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1FD8231681029E00A300C5 /* SKRule.m */; };
+		BF1FD8261681029E00A300C5 /* SKRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1FD8231681029E00A300C5 /* SKRule.m */; };
+		BF1FD8271681041300A300C5 /* ScrapeKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF2DCA691680FD9700C26D6E /* ScrapeKit.h */; };
+		BF1FD8281681041600A300C5 /* SKRule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BF1FD8221681029E00A300C5 /* SKRule.h */; };
 		BF2DCA5D1680FD9700C26D6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2DCA5C1680FD9700C26D6E /* Cocoa.framework */; };
 		BF2DCA671680FD9700C26D6E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF2DCA651680FD9700C26D6E /* InfoPlist.strings */; };
 		BF2DCA771680FE1700C26D6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2DCA761680FE1700C26D6E /* Foundation.framework */; };
@@ -20,12 +25,16 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				BF1FD8281681041600A300C5 /* SKRule.h in CopyFiles */,
+				BF1FD8271681041300A300C5 /* ScrapeKit.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF1FD8221681029E00A300C5 /* SKRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKRule.h; sourceTree = "<group>"; };
+		BF1FD8231681029E00A300C5 /* SKRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKRule.m; sourceTree = "<group>"; };
 		BF2DCA591680FD9700C26D6E /* ScrapeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ScrapeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF2DCA5C1680FD9700C26D6E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BF2DCA5F1680FD9700C26D6E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -59,6 +68,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF1FD8211681027C00A300C5 /* rules */ = {
+			isa = PBXGroup;
+			children = (
+				BF1FD8221681029E00A300C5 /* SKRule.h */,
+				BF1FD8231681029E00A300C5 /* SKRule.m */,
+			);
+			path = rules;
+			sourceTree = "<group>";
+		};
 		BF2DCA4D1680FD9700C26D6E = {
 			isa = PBXGroup;
 			children = (
@@ -100,7 +118,10 @@
 		BF2DCA621680FD9700C26D6E /* ScrapeKit */ = {
 			isa = PBXGroup;
 			children = (
-				BF2DCA691680FD9700C26D6E /* ScrapeKit.h */,
+				BF2DCA861681006F00C26D6E /* Classes */,
+				BF2DCA851681006700C26D6E /* External */,
+				BF2DCA841681004F00C26D6E /* Other Sources */,
+				BF2DCA831681003F00C26D6E /* Resources */,
 				BF2DCA631680FD9700C26D6E /* Supporting Files */,
 			);
 			path = ScrapeKit;
@@ -109,11 +130,49 @@
 		BF2DCA631680FD9700C26D6E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BF2DCA641680FD9700C26D6E /* ScrapeKit-Info.plist */,
-				BF2DCA651680FD9700C26D6E /* InfoPlist.strings */,
-				BF2DCA681680FD9700C26D6E /* ScrapeKit-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BF2DCA831681003F00C26D6E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF2DCA871681012300C26D6E /* en.lproj */,
+				BF2DCA641680FD9700C26D6E /* ScrapeKit-Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BF2DCA841681004F00C26D6E /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				BF2DCA681680FD9700C26D6E /* ScrapeKit-Prefix.pch */,
+			);
+			path = "Other Sources";
+			sourceTree = "<group>";
+		};
+		BF2DCA851681006700C26D6E /* External */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		BF2DCA861681006F00C26D6E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BF2DCA691680FD9700C26D6E /* ScrapeKit.h */,
+				BF1FD8211681027C00A300C5 /* rules */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		BF2DCA871681012300C26D6E /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				BF2DCA651680FD9700C26D6E /* InfoPlist.strings */,
+			);
+			name = en.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF2DCA821680FEF600C26D6E /* ScrapeKit.h in Headers */,
+				BF1FD8241681029E00A300C5 /* SKRule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1FD8251681029E00A300C5 /* SKRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1FD8261681029E00A300C5 /* SKRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,8 +355,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ScrapeKit/ScrapeKit-Prefix.pch";
-				INFOPLIST_FILE = "ScrapeKit/ScrapeKit-Info.plist";
+				GCC_PREFIX_HEADER = "ScrapeKit/Other Sources/ScrapeKit-Prefix.pch";
+				INFOPLIST_FILE = "ScrapeKit/Resources/ScrapeKit-Info.plist";
 				PRODUCT_NAME = ScrapeKit;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -308,8 +370,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ScrapeKit/ScrapeKit-Prefix.pch";
-				INFOPLIST_FILE = "ScrapeKit/ScrapeKit-Info.plist";
+				GCC_PREFIX_HEADER = "ScrapeKit/Other Sources/ScrapeKit-Prefix.pch";
+				INFOPLIST_FILE = "ScrapeKit/Resources/ScrapeKit-Info.plist";
 				PRODUCT_NAME = ScrapeKit;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -321,10 +383,11 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/ScrapeKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ScrapeKit/ScrapeKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "ScrapeKit/Other Sources/ScrapeKit-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ScrapeKit;
+				PUBLIC_HEADERS_FOLDER_PATH = include/ScrapeKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -336,10 +399,11 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/ScrapeKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ScrapeKit/ScrapeKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "ScrapeKit/Other Sources/ScrapeKit-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = ScrapeKit;
+				PUBLIC_HEADERS_FOLDER_PATH = include/ScrapeKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
@@ -365,6 +429,7 @@
 				BF2DCA701680FD9700C26D6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BF2DCA7F1680FE1700C26D6E /* Build configuration list for PBXNativeTarget "libScrapeKit.a" */ = {
 			isa = XCConfigurationList;
@@ -373,6 +438,7 @@
 				BF2DCA811680FE1700C26D6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
