@@ -9,8 +9,21 @@
 /* Begin PBXBuildFile section */
 		BF2DCA5D1680FD9700C26D6E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2DCA5C1680FD9700C26D6E /* Cocoa.framework */; };
 		BF2DCA671680FD9700C26D6E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF2DCA651680FD9700C26D6E /* InfoPlist.strings */; };
-		BF2DCA6B1680FD9700C26D6E /* ScrapeKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2DCA6A1680FD9700C26D6E /* ScrapeKit.m */; };
+		BF2DCA771680FE1700C26D6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2DCA761680FE1700C26D6E /* Foundation.framework */; };
+		BF2DCA821680FEF600C26D6E /* ScrapeKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BF2DCA691680FD9700C26D6E /* ScrapeKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF2DCA731680FE1700C26D6E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BF2DCA591680FD9700C26D6E /* ScrapeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ScrapeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,7 +35,8 @@
 		BF2DCA661680FD9700C26D6E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BF2DCA681680FD9700C26D6E /* ScrapeKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScrapeKit-Prefix.pch"; sourceTree = "<group>"; };
 		BF2DCA691680FD9700C26D6E /* ScrapeKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrapeKit.h; sourceTree = "<group>"; };
-		BF2DCA6A1680FD9700C26D6E /* ScrapeKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrapeKit.m; sourceTree = "<group>"; };
+		BF2DCA751680FE1700C26D6E /* libScrapeKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libScrapeKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF2DCA761680FE1700C26D6E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +45,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF2DCA5D1680FD9700C26D6E /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF2DCA721680FE1700C26D6E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF2DCA771680FE1700C26D6E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				BF2DCA591680FD9700C26D6E /* ScrapeKit.framework */,
+				BF2DCA751680FE1700C26D6E /* libScrapeKit.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				BF2DCA5C1680FD9700C26D6E /* Cocoa.framework */,
+				BF2DCA761680FE1700C26D6E /* Foundation.framework */,
 				BF2DCA5E1680FD9700C26D6E /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -77,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				BF2DCA691680FD9700C26D6E /* ScrapeKit.h */,
-				BF2DCA6A1680FD9700C26D6E /* ScrapeKit.m */,
 				BF2DCA631680FD9700C26D6E /* Supporting Files */,
 			);
 			path = ScrapeKit;
@@ -100,15 +123,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF2DCA821680FEF600C26D6E /* ScrapeKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		BF2DCA581680FD9700C26D6E /* ScrapeKit */ = {
+		BF2DCA581680FD9700C26D6E /* ScrapeKit.framework */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF2DCA6E1680FD9700C26D6E /* Build configuration list for PBXNativeTarget "ScrapeKit" */;
+			buildConfigurationList = BF2DCA6E1680FD9700C26D6E /* Build configuration list for PBXNativeTarget "ScrapeKit.framework" */;
 			buildPhases = (
 				BF2DCA541680FD9700C26D6E /* Sources */,
 				BF2DCA551680FD9700C26D6E /* Frameworks */,
@@ -119,10 +143,27 @@
 			);
 			dependencies = (
 			);
-			name = ScrapeKit;
+			name = ScrapeKit.framework;
 			productName = ScrapeKit;
 			productReference = BF2DCA591680FD9700C26D6E /* ScrapeKit.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		BF2DCA741680FE1700C26D6E /* libScrapeKit.a */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF2DCA7F1680FE1700C26D6E /* Build configuration list for PBXNativeTarget "libScrapeKit.a" */;
+			buildPhases = (
+				BF2DCA711680FE1700C26D6E /* Sources */,
+				BF2DCA721680FE1700C26D6E /* Frameworks */,
+				BF2DCA731680FE1700C26D6E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libScrapeKit.a;
+			productName = ScrapeKit;
+			productReference = BF2DCA751680FE1700C26D6E /* libScrapeKit.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -145,7 +186,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BF2DCA581680FD9700C26D6E /* ScrapeKit */,
+				BF2DCA581680FD9700C26D6E /* ScrapeKit.framework */,
+				BF2DCA741680FE1700C26D6E /* libScrapeKit.a */,
 			);
 		};
 /* End PBXProject section */
@@ -166,7 +208,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF2DCA6B1680FD9700C26D6E /* ScrapeKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF2DCA711680FE1700C26D6E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,7 +295,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScrapeKit/ScrapeKit-Prefix.pch";
 				INFOPLIST_FILE = "ScrapeKit/ScrapeKit-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ScrapeKit;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -262,8 +310,39 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScrapeKit/ScrapeKit-Prefix.pch";
 				INFOPLIST_FILE = "ScrapeKit/ScrapeKit-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ScrapeKit;
 				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		BF2DCA801680FE1700C26D6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/ScrapeKit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ScrapeKit/ScrapeKit-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ScrapeKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BF2DCA811680FE1700C26D6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/ScrapeKit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ScrapeKit/ScrapeKit-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ScrapeKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -279,11 +358,19 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF2DCA6E1680FD9700C26D6E /* Build configuration list for PBXNativeTarget "ScrapeKit" */ = {
+		BF2DCA6E1680FD9700C26D6E /* Build configuration list for PBXNativeTarget "ScrapeKit.framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF2DCA6F1680FD9700C26D6E /* Debug */,
 				BF2DCA701680FD9700C26D6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BF2DCA7F1680FE1700C26D6E /* Build configuration list for PBXNativeTarget "libScrapeKit.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF2DCA801680FE1700C26D6E /* Debug */,
+				BF2DCA811680FE1700C26D6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
