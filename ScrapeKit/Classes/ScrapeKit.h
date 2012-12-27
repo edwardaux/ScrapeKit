@@ -6,8 +6,14 @@
 //  Copyright (c) 2012 BlackDog Foundry. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "SKEngine.h"
+#import "SKDebugger.h"
+#import "SKFunction.h"
+#import "SKFrame.h"
+#import "SKTextBuffer.h"
 
-@interface ScrapeKit : NSObject
-
-@end
+#import "SKRule.h"
+#import "SKLabelRule.h"
+#import "SKGotoRule.h"
+#import "SKInvokeRule.h"
+#import "SKPopRule.h"
