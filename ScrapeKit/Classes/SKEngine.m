@@ -17,8 +17,10 @@
 		_functionMap = [NSMutableDictionary dictionary];
 		[self setDebugger:nil];
 		
-		[self addRuleImplementationClass:[SKLabelRule class] forVerb:@"LABEL"];
-		[self addRuleImplementationClass:[SKLabelRule class] forVerb:@"GOTO"];
+		[self addRuleImplementationClass:[SKLabelRule class]  forVerb:@"LABEL"];
+		[self addRuleImplementationClass:[SKGotoRule class]   forVerb:@"GOTO"];
+		[self addRuleImplementationClass:[SKInvokeRule class] forVerb:@"INVOKE"];
+		[self addRuleImplementationClass:[SKPopRule class]    forVerb:@"POP"];
 	}
 	return self;
 }
@@ -33,7 +35,7 @@
 }
 
 -(void)addRuleImplementationClass:(Class)clazz forVerb:(NSString *)verb {
-	_ruleImplementations[verb] = clazz;
+	_ruleImplementations[[verb uppercaseString]] = clazz;
 }
 
 -(SKFunction *)functionForName:(NSString *)functionName {
@@ -45,7 +47,7 @@
 #
 -(BOOL)compile:(NSString *)script error:(NSError **)error {
 	SKFunction *currentFunction = nil;
-	NSArray *ruleStrings = [script componentsSeparatedByString:@"\\n"];
+	NSArray *ruleStrings = [script componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 	for (NSString *tmpRuleString in ruleStrings) {
 		NSString *ruleString = [tmpRuleString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		
@@ -58,6 +60,14 @@
 			NSString *functionName = [ruleString substringFromIndex:1];
 			currentFunction = [[SKFunction alloc] initWithEngine:self name:functionName];
 			_functionMap[functionName] = currentFunction;
+		}
+		else if ([ruleString hasPrefix:@":"]) {
+			// a label
+			SKRule *rule = [self newRuleForVerb:ruleString error:error];
+			[rule setVerb:@"LABEL"];
+			[rule setParams:@[ruleString]];
+			[rule setFunction:currentFunction];
+			[currentFunction addRule:rule];
 		}
 		else {
 			// must be a rule
@@ -83,23 +93,12 @@
 
 -(SKRule *)compileRule:(NSString *)ruleString inFunction:(SKFunction *)function error:(NSError **)error {
 	
-	// TODO parse verb and params
-	NSString *verb = @"";
-	NSArray *params = @[ @"a", @"b" ];
+	NSArray *tokens = [self tokenizeRule:ruleString];
+	NSString *verb = tokens[0];
+	NSArray *params = [tokens subarrayWithRange:NSMakeRange(1, [tokens count]-1)];
 	
-	Class clazz = _ruleImplementations[verb];
-	if (clazz == nil) {
-		[self populateCompilationError:error withMessage:[NSString stringWithFormat:@"Unable to find rule implementation for %@", verb]];
-		return nil;
-	}
-
-	NSObject *object = [[clazz alloc] init];
-	if (![object isKindOfClass:[SKRule class]]) {
-		[self populateCompilationError:error withMessage:[NSString stringWithFormat:@"Implementation for %@ is not a valid SKRule class", NSStringFromClass(clazz)]];
-		return nil;
-	}
-	SKRule *rule = (SKRule *)object;
-	if ([rule validateParams:params error:error]) {
+	SKRule *rule = [self newRuleForVerb:verb error:error];
+	if (![rule validateParams:params error:error]) {
 		return nil;
 	}
 	[rule setVerb:verb];
@@ -107,7 +106,7 @@
 	[rule setFunction:function];
 	[function addRule:rule];
 	
-	return nil;
+	return rule;
 }
 			
 -(void)populateCompilationError:(NSError **)error withMessage:(NSString *)message {
@@ -115,8 +114,96 @@
 		*error = [NSError errorWithDomain:@"ScrapeKit" code:0 userInfo:@{ NSLocalizedDescriptionKey : message }];
 }
 
+-(SKRule *)newRuleForVerb:(NSString *)verb error:(NSError **)error {
+	Class clazz = _ruleImplementations[[verb uppercaseString]];
+	if (clazz == nil) {
+		[self populateCompilationError:error withMessage:[NSString stringWithFormat:@"Unable to find rule implementation for \"%@\"", verb]];
+		return nil;
+	}
+	
+	NSObject *object = [[clazz alloc] init];
+	if (![object isKindOfClass:[SKRule class]]) {
+		[self populateCompilationError:error withMessage:[NSString stringWithFormat:@"Implementation for \"%@\" is not a valid SKRule class", NSStringFromClass(clazz)]];
+		return nil;
+	}
+	
+	return (SKRule *)object;
+}
+
+-(NSArray *)tokenizeRule:(NSString *)paramString {
+	// TODO handle quoted strings
+	/*
+	NSMutableArray *rows = [NSMutableArray array];
+	
+	// Get newline character set
+	NSMutableCharacterSet *newlineCharacterSet = (id)[NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
+	[newlineCharacterSet formIntersectionWithCharacterSet:[[NSCharacterSet whitespaceCharacterSet] invertedSet]];
+	
+	// Characters that are important to the parser
+	NSMutableCharacterSet *importantCharactersSet = (id)[NSMutableCharacterSet characterSetWithCharactersInString:@",\""];
+	[importantCharactersSet formUnionWithCharacterSet:newlineCharacterSet];
+	
+	// Create scanner, and scan string
+	NSScanner *scanner = [NSScanner scannerWithString:self];
+	[scanner setCharactersToBeSkipped:nil];
+	while ( ![scanner isAtEnd] ) {
+		BOOL insideQuotes = NO;
+		BOOL finishedRow = NO;
+		NSMutableArray *columns = [NSMutableArray arrayWithCapacity:10];
+		NSMutableString *currentColumn = [NSMutableString string];
+		while ( !finishedRow ) {
+			NSString *tempString;
+			if ( [scanner scanUpToCharactersFromSet:importantCharactersSet intoString:&tempString] ) {
+				[currentColumn appendString:tempString];
+			}
+			
+			if ( [scanner isAtEnd] ) {
+				if ( ![currentColumn isEqualToString:@""] ) [columns addObject:currentColumn];
+				finishedRow = YES;
+			}
+			else if ( [scanner scanCharactersFromSet:newlineCharacterSet intoString:&tempString] ) {
+				if ( insideQuotes ) {
+					// Add line break to column text
+					[currentColumn appendString:tempString];
+				}
+				else {
+					// End of row
+					if ( ![currentColumn isEqualToString:@""] ) [columns addObject:currentColumn];
+					finishedRow = YES;
+				}
+			}
+			else if ( [scanner scanString:@"\"" intoString:NULL] ) {
+				if ( insideQuotes && [scanner scanString:@"\"" intoString:NULL] ) {
+					// Replace double quotes with a single quote in the column string.
+					[currentColumn appendString:@"\""];
+				}
+				else {
+					// Start or end of a quoted string.
+					insideQuotes = !insideQuotes;
+				}
+			}
+			else if ( [scanner scanString:@"," intoString:NULL] ) {
+				if ( insideQuotes ) {
+					[currentColumn appendString:@","];
+				}
+				else {
+					// This is a column separating comma
+					[columns addObject:currentColumn];
+					currentColumn = [NSMutableString string];
+					[scanner scanCharactersFromSet:[NSCharacterSet whitespaceCharacterSet] intoString:NULL];
+				}
+			}
+		}
+		if ( [columns count] > 0 ) [rows addObject:columns];
+	}
+	
+	return rows;
+	 */
+	return [paramString componentsSeparatedByString:@" "];
+}
+
 #
-#pragma mark - Runtime evaluation 
+#pragma mark - Runtime evaluation
 #
 -(void)parse:(NSString *)inputString {
 	[self reset];
@@ -129,7 +216,7 @@
 	SKFunction *function = _functionMap[functionName];
 	if (function == nil) {
 		if ([self isDebugging])
-			[[self debugger] outputMessage:callingRule message:[NSString stringWithFormat:@"Unable to find function: %@", functionName]];
+			[[self debugger] outputMessage:callingRule message:[NSString stringWithFormat:@"Unable to find function \"%@\"", functionName]];
 		return NO;
 	}
 	
