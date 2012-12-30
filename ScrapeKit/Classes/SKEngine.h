@@ -14,20 +14,34 @@
 @interface SKEngine : NSObject {
 	NSMutableDictionary *_ruleImplementations;
 	NSMutableDictionary *_functionMap;
-	NSMutableArray      *_textStack;
 	NSMutableArray      *_frameStack;
+
+	NSMutableArray      *_textStack;
+	NSMutableDictionary *_variablePool;
 }
 
 @property (nonatomic, strong) SKDebugger *debugger;
 
+// -------------------------------------------------------------------------------
+// Normally called from users of scripts
+// -------------------------------------------------------------------------------
 -(BOOL)compile:(NSString *)script error:(NSError **)error;
 -(void)parse:(NSString *)inputString;
 
+// -------------------------------------------------------------------------------
+// Normally called by implementors of custom rules
+// -------------------------------------------------------------------------------
 -(void)addRuleImplementationClass:(Class)clazz forVerb:(NSString *)verb;
 -(BOOL)executeFunction:(NSString *)functionName callingRule:(SKRule *)rule;
+
+// -------------------------------------------------------------------------------
+// Normally called from within rule implementations
+// -------------------------------------------------------------------------------
+-(BOOL)isDebugging;
 -(void)push:(SKTextBuffer *)buffer;
 -(SKTextBuffer *)pop;
 -(SKTextBuffer *)peek;
--(BOOL)isDebugging;
+-(id)variableFor:(NSString *)varName;
+-(void)setVariableFor:(NSString *)varName value:(id)value;
 
 @end

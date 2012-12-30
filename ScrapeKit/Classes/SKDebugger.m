@@ -27,8 +27,8 @@
 }
 
 -(void)dumpTextStack:(NSArray *)textStack {
-	for (int i = [textStack count]-1; i >= 0; i--)
-		NSLog(@"%@  %@", _indent, [NSString stringWithFormat:@"%d %@", [textStack count]-i-1, [textStack[i] debugDescription]]);
+	for (NSInteger i = [textStack count]-1; i >= 0; i--)
+		NSLog(@"%@  %@", _indent, [NSString stringWithFormat:@"%ld %@", [textStack count]-i-1, [textStack[i] debugDescription]]);
 }
 
 @end

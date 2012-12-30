@@ -26,8 +26,10 @@
 }
 
 -(void)reset {
-	_textStack = [NSMutableArray array];
 	_frameStack = [NSMutableArray array];
+
+	_textStack = [NSMutableArray array];
+	_variablePool = [NSMutableDictionary dictionary];
 }
 
 -(BOOL)isDebugging {
@@ -259,4 +261,13 @@
 -(SKTextBuffer *)peek {
 	return [_textStack lastObject];
 }
+
+-(id)variableFor:(NSString *)varName {
+	return _variablePool[varName];
+}
+
+-(void)setVariableFor:(NSString *)varName value:(id)value {
+	_variablePool[varName] = value;
+}
+
 @end

@@ -8,8 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SKTextBuffer : NSObject
+@interface SKTextBuffer : NSObject {
+	NSString *_text;
+	NSRange    _range;
+	NSUInteger _head;
+}
 
 -(id)initWithString:(NSString *)string;
+-(id)initWithString:(NSString *)string range:(NSRange)range;
+
+-(SKTextBuffer *)betweenString1:(NSString *)string1 include1:(BOOL)include1 string2:(NSString *)string2 include2:(BOOL)include2 includeToEOF:(BOOL)includeToEOF;
+-(void)reset;
+-(NSString *)stringValue;
 
 @end
