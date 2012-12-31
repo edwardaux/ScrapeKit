@@ -67,6 +67,10 @@
 	return [_text substringWithRange:_range];
 }
 
+-(NSString *)remainingStringValue {
+	return [_text substringWithRange:NSMakeRange(_head, NSMaxRange(_range)-_head)];
+}
+
 -(NSString *)debugDescription {
 	NSUInteger leadingTrailing = 30;
 	NSString *orig = [self stringValue];

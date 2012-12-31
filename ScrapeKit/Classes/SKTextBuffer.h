@@ -20,5 +20,6 @@
 -(SKTextBuffer *)betweenString1:(NSString *)string1 include1:(BOOL)include1 string2:(NSString *)string2 include2:(BOOL)include2 includeToEOF:(BOOL)includeToEOF;
 -(void)reset;
 -(NSString *)stringValue;
+-(NSString *)remainingStringValue;
 
 @end
