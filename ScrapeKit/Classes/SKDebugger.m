@@ -27,8 +27,10 @@
 }
 
 -(void)dumpTextStack:(NSArray *)textStack {
-	for (NSInteger i = [textStack count]-1; i >= 0; i--)
-		NSLog(@"%@  %@", _indent, [NSString stringWithFormat:@"%ld %@", [textStack count]-i-1, [textStack[i] debugDescription]]);
+	NSUInteger i = 0;
+	for (SKTextBuffer *buffer in [textStack reverseObjectEnumerator]) {
+		NSLog(@"%@  %@", _indent, [NSString stringWithFormat:@"%ld %@", (unsigned long)i++, [buffer debugDescription]]);
+	}
 }
 
 @end

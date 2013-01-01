@@ -28,7 +28,7 @@
 }
 
 -(BOOL)doGoto:(NSString *)label frame:(SKFrame *)frame function:(SKFunction *)function {
-	for (int i = 0; i < [[function rules] count]; i++) {
+	for (NSUInteger i = 0; i < [[function rules] count]; i++) {
 		SKRule *rule = [function rules][i];
 		if ([rule isKindOfClass:[SKLabelRule class]]) {
 			if ([[(SKLabelRule *)rule label] isEqual:label]) {

@@ -33,14 +33,14 @@
 	NSUInteger head = _head;
 	NSRange range = [_text rangeOfString:string1 options:0 range:NSMakeRange(head, NSMaxRange(_range)-head)];
 	if (range.location == NSNotFound)
-		head = -1;
+		head = NSNotFound;
 	else
 		head = include1 ? range.location : NSMaxRange(range);
 	
 	// now move the tail to string2
 	NSUInteger tail = head;
 	// not much point looking if we haven't found string1
-	if (head != -1) {
+	if (head != NSNotFound) {
 		// note that we look from the end of the first string
 		// regardless of what we are consuming
 		range = [_text rangeOfString:string2 options:0 range:NSMakeRange(NSMaxRange(range), NSMaxRange(_range)-NSMaxRange(range))];
@@ -48,13 +48,13 @@
 			if (includeToEOF)
 				tail = NSMaxRange(_range);
 			else
-				tail = -1;
+				tail = NSNotFound;
 		}
 		else
 			tail = include2 ? NSMaxRange(range) : range.location;
 	}
 	
-	if (head == -1 || tail == -1)
+	if (head == NSNotFound || tail == NSNotFound)
 		return nil;
 	else {
 		// commit the consumed head position

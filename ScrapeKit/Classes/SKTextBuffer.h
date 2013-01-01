@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface SKTextBuffer : NSObject {
-	NSString *_text;
+	NSString  *_text;
 	NSRange    _range;
 	NSUInteger _head;
 }

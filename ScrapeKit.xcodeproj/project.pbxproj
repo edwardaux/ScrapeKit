@@ -49,6 +49,7 @@
 		BFE0499E169382FF00EA7F6E /* SKIfFailureRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE0499C169382FE00EA7F6E /* SKIfFailureRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFE0499F169382FF00EA7F6E /* SKIfFailureRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE0499D169382FF00EA7F6E /* SKIfFailureRule.m */; };
 		BFE049A0169382FF00EA7F6E /* SKIfFailureRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE0499D169382FF00EA7F6E /* SKIfFailureRule.m */; };
+		BFF05CAD169392590086583F /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BFF05CAC169392590086583F /* Warnings.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -101,6 +102,7 @@
 		BFE049981693802600EA7F6E /* SKIfSuccessRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKIfSuccessRule.m; sourceTree = "<group>"; };
 		BFE0499C169382FE00EA7F6E /* SKIfFailureRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKIfFailureRule.h; sourceTree = "<group>"; };
 		BFE0499D169382FF00EA7F6E /* SKIfFailureRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKIfFailureRule.m; sourceTree = "<group>"; };
+		BFF05CAC169392590086583F /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 		BF2DCA4D1680FD9700C26D6E = {
 			isa = PBXGroup;
 			children = (
+				BFF05CAC169392590086583F /* Warnings.xcconfig */,
 				BF2DCA621680FD9700C26D6E /* ScrapeKit */,
 				BF2DCA5B1680FD9700C26D6E /* Frameworks */,
 				BF2DCA5A1680FD9700C26D6E /* Products */,
@@ -347,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF2DCA671680FD9700C26D6E /* InfoPlist.strings in Resources */,
+				BFF05CAD169392590086583F /* Warnings.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +411,7 @@
 /* Begin XCBuildConfiguration section */
 		BF2DCA6C1680FD9700C26D6E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFF05CAC169392590086583F /* Warnings.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -437,6 +442,7 @@
 		};
 		BF2DCA6D1680FD9700C26D6E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFF05CAC169392590086583F /* Warnings.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -460,6 +466,7 @@
 		};
 		BF2DCA6F1680FD9700C26D6E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFF05CAC169392590086583F /* Warnings.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -475,6 +482,7 @@
 		};
 		BF2DCA701680FD9700C26D6E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFF05CAC169392590086583F /* Warnings.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -490,6 +498,7 @@
 		};
 		BF2DCA801680FE1700C26D6E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFF05CAC169392590086583F /* Warnings.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/ScrapeKit.dst;
@@ -506,6 +515,7 @@
 		};
 		BF2DCA811680FE1700C26D6E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFF05CAC169392590086583F /* Warnings.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/ScrapeKit.dst;
