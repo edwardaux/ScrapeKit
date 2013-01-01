@@ -234,7 +234,7 @@
 			[[self debugger] executingRule:rule textStack:_textStack];
 		}
 		BOOL lastSuccess = [rule executeInFrame:frame function:function engine:self];
-		[frame setLastSuccess:lastSuccess];
+		[self setLastRuleWasSuccessful:lastSuccess];
 		if ([self isDebugging]) {
 			[[self debugger] outputMessage:rule message:[NSString stringWithFormat:@"Success=%@", lastSuccess?@"YES":@"NO"]];
 		}

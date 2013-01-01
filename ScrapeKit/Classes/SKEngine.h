@@ -21,6 +21,7 @@
 }
 
 @property (nonatomic, strong) SKDebugger *debugger;
+@property (nonatomic)         BOOL lastRuleWasSuccessful;
 
 // -------------------------------------------------------------------------------
 // Normally called from users of scripts

@@ -27,6 +27,19 @@
 		return nil;
 }
 
+-(BOOL)doGoto:(NSString *)label frame:(SKFrame *)frame function:(SKFunction *)function {
+	for (int i = 0; i < [[function rules] count]; i++) {
+		SKRule *rule = [function rules][i];
+		if ([rule isKindOfClass:[SKLabelRule class]]) {
+			if ([[(SKLabelRule *)rule label] isEqual:label]) {
+				[frame setPC:i];
+				return YES;
+			}
+		}
+	}
+	return NO;
+}
+
 -(NSString *)description {
 	return [NSString stringWithFormat:@"%@ %@", [self verb], [[self params] componentsJoinedByString:@" "]];
 }

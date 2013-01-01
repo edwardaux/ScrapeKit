@@ -11,8 +11,8 @@
 @implementation SKPopRule
 
 -(BOOL)executeInFrame:(SKFrame *)frame function:(SKFunction *)function engine:(SKEngine *)engine {
-	[engine pop];
-	return YES;
+	SKTextBuffer *buffer = [engine pop];
+	return buffer != nil;
 }
 
 @end

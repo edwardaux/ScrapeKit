@@ -43,6 +43,12 @@
 		BFD9AD4B1681A7DC007F158A /* SKEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD9AD491681A7DC007F158A /* SKEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFD9AD4C1681A7DC007F158A /* SKEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD9AD4A1681A7DC007F158A /* SKEngine.m */; };
 		BFD9AD4D1681A7DC007F158A /* SKEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD9AD4A1681A7DC007F158A /* SKEngine.m */; };
+		BFE049991693802600EA7F6E /* SKIfSuccessRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE049971693802600EA7F6E /* SKIfSuccessRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFE0499A1693802600EA7F6E /* SKIfSuccessRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE049981693802600EA7F6E /* SKIfSuccessRule.m */; };
+		BFE0499B1693802600EA7F6E /* SKIfSuccessRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE049981693802600EA7F6E /* SKIfSuccessRule.m */; };
+		BFE0499E169382FF00EA7F6E /* SKIfFailureRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BFE0499C169382FE00EA7F6E /* SKIfFailureRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFE0499F169382FF00EA7F6E /* SKIfFailureRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE0499D169382FF00EA7F6E /* SKIfFailureRule.m */; };
+		BFE049A0169382FF00EA7F6E /* SKIfFailureRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE0499D169382FF00EA7F6E /* SKIfFailureRule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -91,6 +97,10 @@
 		BFD9AD451681A787007F158A /* SKFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKFunction.m; path = Engine/SKFunction.m; sourceTree = "<group>"; };
 		BFD9AD491681A7DC007F158A /* SKEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKEngine.h; sourceTree = "<group>"; };
 		BFD9AD4A1681A7DC007F158A /* SKEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKEngine.m; sourceTree = "<group>"; };
+		BFE049971693802600EA7F6E /* SKIfSuccessRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKIfSuccessRule.h; sourceTree = "<group>"; };
+		BFE049981693802600EA7F6E /* SKIfSuccessRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKIfSuccessRule.m; sourceTree = "<group>"; };
+		BFE0499C169382FE00EA7F6E /* SKIfFailureRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKIfFailureRule.h; sourceTree = "<group>"; };
+		BFE0499D169382FF00EA7F6E /* SKIfFailureRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKIfFailureRule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +132,10 @@
 				BF34786616826E470090FBCE /* SKLabelRule.m */,
 				BF34787B168272700090FBCE /* SKGotoRule.h */,
 				BF34787C168272700090FBCE /* SKGotoRule.m */,
+				BFE049971693802600EA7F6E /* SKIfSuccessRule.h */,
+				BFE049981693802600EA7F6E /* SKIfSuccessRule.m */,
+				BFE0499C169382FE00EA7F6E /* SKIfFailureRule.h */,
+				BFE0499D169382FF00EA7F6E /* SKIfFailureRule.m */,
 				BF347896168425820090FBCE /* SKInvokeRule.h */,
 				BF347897168425820090FBCE /* SKInvokeRule.m */,
 				BF34789B168427BD0090FBCE /* SKPopRule.h */,
@@ -257,6 +271,8 @@
 				BF3478931683015E0090FBCE /* SKTextBuffer.h in Headers */,
 				BF347898168425820090FBCE /* SKInvokeRule.h in Headers */,
 				BF34789D168427BE0090FBCE /* SKPopRule.h in Headers */,
+				BFE049991693802600EA7F6E /* SKIfSuccessRule.h in Headers */,
+				BFE0499E169382FF00EA7F6E /* SKIfFailureRule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +367,8 @@
 				BF3478941683015E0090FBCE /* SKTextBuffer.m in Sources */,
 				BF347899168425820090FBCE /* SKInvokeRule.m in Sources */,
 				BF34789E168427BE0090FBCE /* SKPopRule.m in Sources */,
+				BFE0499A1693802600EA7F6E /* SKIfSuccessRule.m in Sources */,
+				BFE0499F169382FF00EA7F6E /* SKIfFailureRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +386,8 @@
 				BF3478951683015E0090FBCE /* SKTextBuffer.m in Sources */,
 				BF34789A168425820090FBCE /* SKInvokeRule.m in Sources */,
 				BF34789F168427BE0090FBCE /* SKPopRule.m in Sources */,
+				BFE0499B1693802600EA7F6E /* SKIfSuccessRule.m in Sources */,
+				BFE049A0169382FF00EA7F6E /* SKIfFailureRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

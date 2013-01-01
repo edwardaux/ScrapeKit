@@ -8,6 +8,16 @@
 
 @class SKRule;
 
+// ------------------------------------------------------------------------------------
+// Usage:
+//   :labelname
+//
+// Notes:
+//   * Identifies a label within the current function.
+//   * Must contain a leading colon.
+//   * Does nothing other than identify a label location.
+//   * Returns success always
+// ------------------------------------------------------------------------------------
 @interface SKLabelRule : SKRule
 
 -(NSString *)label;

@@ -8,6 +8,14 @@
 
 @class SKRule;
 
+// ------------------------------------------------------------------------------------
+// Usage:
+//   INVOKE functionName
+//
+// Notes:
+//   * Invokes a function.
+//   * Returns success if the function is found, failure otherwise.
+// ------------------------------------------------------------------------------------
 @interface SKInvokeRule : SKRule
 
 @end

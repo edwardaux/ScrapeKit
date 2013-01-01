@@ -13,7 +13,9 @@
 #import "SKTextBuffer.h"
 
 #import "SKRule.h"
-#import "SKLabelRule.h"
 #import "SKGotoRule.h"
+#import "SKIfSuccessRule.h"
+#import "SKIfFailureRule.h"
 #import "SKInvokeRule.h"
+#import "SKLabelRule.h"
 #import "SKPopRule.h"

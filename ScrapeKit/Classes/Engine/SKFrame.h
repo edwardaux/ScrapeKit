@@ -16,7 +16,6 @@
 }
 
 @property (nonatomic) NSUInteger PC;
-@property (nonatomic) BOOL lastSuccess;
 
 -(id)initWithFunction:(SKFunction *)function inEngine:(SKEngine *)engine;
 -(SKRule *)nextRule;

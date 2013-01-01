@@ -10,8 +10,9 @@
 
 @implementation SKInvokeRule
 
--(BOOL)executeInFrame:(SKFrame *)frame function:(SKFunction *)functions engine:(SKEngine *)engine {
+-(BOOL)executeInFrame:(SKFrame *)frame function:(SKFunction *)function engine:(SKEngine *)engine {
 	NSString *functionName = [self param:0];
 	return [engine executeFunction:functionName callingRule:self];
 }
+
 @end

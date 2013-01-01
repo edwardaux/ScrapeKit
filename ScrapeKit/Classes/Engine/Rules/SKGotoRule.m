@@ -12,17 +12,7 @@
 
 -(BOOL)executeInFrame:(SKFrame *)frame function:(SKFunction *)function engine:(SKEngine *)engine {
 	NSString *label = [self param:0];
-	
-	for (int i = 0; i < [[function rules] count]; i++) {
-		SKRule *rule = [function rules][i];
-		if ([rule isKindOfClass:[SKLabelRule class]]) {
-			if ([[(SKLabelRule *)rule label] isEqual:label]) {
-				[frame setPC:i];
-				return YES;
-			}
-		}
-	}
-	return NO;
+	return [self doGoto:label frame:frame function:function];
 }
 
 @end

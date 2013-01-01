@@ -8,6 +8,14 @@
 
 @class SKRule;
 
+// ------------------------------------------------------------------------------------
+// Usage:
+//   GOTO :labelname
+//
+// Notes:
+//   * Changes the current execution location to the identified label
+//   * Returns success if the label is found, failure otherwise.
+// ------------------------------------------------------------------------------------
 @interface SKGotoRule : SKRule
 
 @end
