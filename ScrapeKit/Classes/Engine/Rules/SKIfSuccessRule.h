@@ -10,7 +10,7 @@
 
 // ------------------------------------------------------------------------------------
 // Usage:
-//   IFSUCCESS :labelname
+//   IFSUCCESS labelname
 //
 // Notes:
 //   * Changes the current execution location to the identified label if the previously

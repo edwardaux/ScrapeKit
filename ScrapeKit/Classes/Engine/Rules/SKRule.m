@@ -20,6 +20,9 @@
 	return YES;
 }
 
+#
+#pragma mark - Useful methods that subclasses may want to call
+#
 -(NSString *)param:(NSUInteger)index {
 	if (index < [[self params] count])
 		return [self params][index];
@@ -38,6 +41,46 @@
 		}
 	}
 	return NO;
+}
+
+-(BOOL)saveValue:(id)value intoVariable:(NSString *)variableName propertyName:(NSString *)propertyName engine:(SKEngine *)engine {
+	BOOL ableToBeSaved = YES;
+	id variable = [engine variableFor:variableName];
+	if (variable == nil) {
+		// no pre-existing variable, so we're going to save it as a string
+		[engine setVariableFor:variableName value:value];
+	}
+	else {
+		if ([variable isKindOfClass:[NSString class]]) {
+			// replace it
+			[engine setVariableFor:variableName value:value];
+		}
+		else if ([variable isKindOfClass:[NSMutableArray class]]) {
+			// let's add it to the end of the array
+			[variable addObject:value];
+		}
+		else if ([variable isKindOfClass:[NSMutableDictionary class]]) {
+			// let's add it as a value in the dictionary (assuming propertyName
+			// is present)
+			if (propertyName != nil)
+				variable[propertyName] = value;
+			else
+				ableToBeSaved = NO;
+		}
+		else {
+			// let's add it as a property of a normal object
+			@try {
+				if (propertyName != nil)
+					[variable setValue:value forKey:propertyName];
+				else
+					ableToBeSaved = NO;
+			}
+			@catch (NSException *exception) {
+				ableToBeSaved = NO;
+			}
+		}
+	}
+	return ableToBeSaved;
 }
 
 -(NSString *)description {

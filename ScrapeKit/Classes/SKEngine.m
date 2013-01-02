@@ -111,9 +111,10 @@
 	return rule;
 }
 			
--(void)populateCompilationError:(NSError **)error withMessage:(NSString *)message {
+-(BOOL)populateCompilationError:(NSError **)error withMessage:(NSString *)message {
 	if (error != NULL)
 		*error = [NSError errorWithDomain:@"ScrapeKit" code:0 userInfo:@{ NSLocalizedDescriptionKey : message }];
+	return YES;
 }
 
 -(SKRule *)newRuleForVerb:(NSString *)verb error:(NSError **)error {

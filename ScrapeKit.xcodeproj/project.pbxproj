@@ -50,6 +50,15 @@
 		BFE0499F169382FF00EA7F6E /* SKIfFailureRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE0499D169382FF00EA7F6E /* SKIfFailureRule.m */; };
 		BFE049A0169382FF00EA7F6E /* SKIfFailureRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE0499D169382FF00EA7F6E /* SKIfFailureRule.m */; };
 		BFF05CAD169392590086583F /* Warnings.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BFF05CAC169392590086583F /* Warnings.xcconfig */; };
+		BFF05CB1169417440086583F /* SKPopIntoVarRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BFF05CAF169417430086583F /* SKPopIntoVarRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFF05CB2169417440086583F /* SKPopIntoVarRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF05CB0169417430086583F /* SKPopIntoVarRule.m */; };
+		BFF05CB3169417440086583F /* SKPopIntoVarRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF05CB0169417430086583F /* SKPopIntoVarRule.m */; };
+		BFF05CB61694DE830086583F /* SKCreateVarRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BFF05CB41694DE830086583F /* SKCreateVarRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFF05CB71694DE830086583F /* SKCreateVarRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF05CB51694DE830086583F /* SKCreateVarRule.m */; };
+		BFF05CB81694DE830086583F /* SKCreateVarRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF05CB51694DE830086583F /* SKCreateVarRule.m */; };
+		BFF05CBB1694E1790086583F /* SKAssignVarRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BFF05CB91694E1780086583F /* SKAssignVarRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFF05CBC1694E1790086583F /* SKAssignVarRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF05CBA1694E1780086583F /* SKAssignVarRule.m */; };
+		BFF05CBD1694E1790086583F /* SKAssignVarRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF05CBA1694E1780086583F /* SKAssignVarRule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -103,6 +112,12 @@
 		BFE0499C169382FE00EA7F6E /* SKIfFailureRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKIfFailureRule.h; sourceTree = "<group>"; };
 		BFE0499D169382FF00EA7F6E /* SKIfFailureRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKIfFailureRule.m; sourceTree = "<group>"; };
 		BFF05CAC169392590086583F /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
+		BFF05CAF169417430086583F /* SKPopIntoVarRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPopIntoVarRule.h; sourceTree = "<group>"; };
+		BFF05CB0169417430086583F /* SKPopIntoVarRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPopIntoVarRule.m; sourceTree = "<group>"; };
+		BFF05CB41694DE830086583F /* SKCreateVarRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKCreateVarRule.h; sourceTree = "<group>"; };
+		BFF05CB51694DE830086583F /* SKCreateVarRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKCreateVarRule.m; sourceTree = "<group>"; };
+		BFF05CB91694E1780086583F /* SKAssignVarRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAssignVarRule.h; sourceTree = "<group>"; };
+		BFF05CBA1694E1780086583F /* SKAssignVarRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKAssignVarRule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +145,10 @@
 			children = (
 				BF1FD8221681029E00A300C5 /* SKRule.h */,
 				BF1FD8231681029E00A300C5 /* SKRule.m */,
+				BFF05CB91694E1780086583F /* SKAssignVarRule.h */,
+				BFF05CBA1694E1780086583F /* SKAssignVarRule.m */,
+				BFF05CB41694DE830086583F /* SKCreateVarRule.h */,
+				BFF05CB51694DE830086583F /* SKCreateVarRule.m */,
 				BF34786516826E470090FBCE /* SKLabelRule.h */,
 				BF34786616826E470090FBCE /* SKLabelRule.m */,
 				BF34787B168272700090FBCE /* SKGotoRule.h */,
@@ -142,6 +161,8 @@
 				BF347897168425820090FBCE /* SKInvokeRule.m */,
 				BF34789B168427BD0090FBCE /* SKPopRule.h */,
 				BF34789C168427BD0090FBCE /* SKPopRule.m */,
+				BFF05CAF169417430086583F /* SKPopIntoVarRule.h */,
+				BFF05CB0169417430086583F /* SKPopIntoVarRule.m */,
 			);
 			name = Rules;
 			path = Engine/Rules;
@@ -276,6 +297,9 @@
 				BF34789D168427BE0090FBCE /* SKPopRule.h in Headers */,
 				BFE049991693802600EA7F6E /* SKIfSuccessRule.h in Headers */,
 				BFE0499E169382FF00EA7F6E /* SKIfFailureRule.h in Headers */,
+				BFF05CB1169417440086583F /* SKPopIntoVarRule.h in Headers */,
+				BFF05CB61694DE830086583F /* SKCreateVarRule.h in Headers */,
+				BFF05CBB1694E1790086583F /* SKAssignVarRule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +397,9 @@
 				BF34789E168427BE0090FBCE /* SKPopRule.m in Sources */,
 				BFE0499A1693802600EA7F6E /* SKIfSuccessRule.m in Sources */,
 				BFE0499F169382FF00EA7F6E /* SKIfFailureRule.m in Sources */,
+				BFF05CB2169417440086583F /* SKPopIntoVarRule.m in Sources */,
+				BFF05CB71694DE830086583F /* SKCreateVarRule.m in Sources */,
+				BFF05CBC1694E1790086583F /* SKAssignVarRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +419,9 @@
 				BF34789F168427BE0090FBCE /* SKPopRule.m in Sources */,
 				BFE0499B1693802600EA7F6E /* SKIfSuccessRule.m in Sources */,
 				BFE049A0169382FF00EA7F6E /* SKIfFailureRule.m in Sources */,
+				BFF05CB3169417440086583F /* SKPopIntoVarRule.m in Sources */,
+				BFF05CB81694DE830086583F /* SKCreateVarRule.m in Sources */,
+				BFF05CBD1694E1790086583F /* SKAssignVarRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

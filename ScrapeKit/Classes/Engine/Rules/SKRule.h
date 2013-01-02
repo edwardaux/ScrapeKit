@@ -18,7 +18,9 @@
 
 -(BOOL)validateParams:(NSArray *)params error:(NSError **)error;
 -(BOOL)executeInFrame:(SKFrame *)frame function:(SKFunction *)function engine:(SKEngine *)engine;
+
 -(NSString *)param:(NSUInteger)index;
 -(BOOL)doGoto:(NSString *)label frame:(SKFrame *)frame function:(SKFunction *)function;
+-(BOOL)saveValue:(id)value intoVariable:(NSString *)variableName propertyName:(NSString *)propertyName engine:(SKEngine *)engine;
 
 @end
