@@ -59,6 +59,9 @@
 		BFF05CBB1694E1790086583F /* SKAssignVarRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BFF05CB91694E1780086583F /* SKAssignVarRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFF05CBC1694E1790086583F /* SKAssignVarRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF05CBA1694E1780086583F /* SKAssignVarRule.m */; };
 		BFF05CBD1694E1790086583F /* SKAssignVarRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF05CBA1694E1780086583F /* SKAssignVarRule.m */; };
+		BFF05CC6169566820086583F /* SKSetVarRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BFF05CC4169566810086583F /* SKSetVarRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFF05CC7169566820086583F /* SKSetVarRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF05CC5169566820086583F /* SKSetVarRule.m */; };
+		BFF05CC8169566820086583F /* SKSetVarRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF05CC5169566820086583F /* SKSetVarRule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -118,6 +121,8 @@
 		BFF05CB51694DE830086583F /* SKCreateVarRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKCreateVarRule.m; sourceTree = "<group>"; };
 		BFF05CB91694E1780086583F /* SKAssignVarRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKAssignVarRule.h; sourceTree = "<group>"; };
 		BFF05CBA1694E1780086583F /* SKAssignVarRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKAssignVarRule.m; sourceTree = "<group>"; };
+		BFF05CC4169566810086583F /* SKSetVarRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKSetVarRule.h; sourceTree = "<group>"; };
+		BFF05CC5169566820086583F /* SKSetVarRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKSetVarRule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,8 +154,6 @@
 				BFF05CBA1694E1780086583F /* SKAssignVarRule.m */,
 				BFF05CB41694DE830086583F /* SKCreateVarRule.h */,
 				BFF05CB51694DE830086583F /* SKCreateVarRule.m */,
-				BF34786516826E470090FBCE /* SKLabelRule.h */,
-				BF34786616826E470090FBCE /* SKLabelRule.m */,
 				BF34787B168272700090FBCE /* SKGotoRule.h */,
 				BF34787C168272700090FBCE /* SKGotoRule.m */,
 				BFE049971693802600EA7F6E /* SKIfSuccessRule.h */,
@@ -159,10 +162,14 @@
 				BFE0499D169382FF00EA7F6E /* SKIfFailureRule.m */,
 				BF347896168425820090FBCE /* SKInvokeRule.h */,
 				BF347897168425820090FBCE /* SKInvokeRule.m */,
+				BF34786516826E470090FBCE /* SKLabelRule.h */,
+				BF34786616826E470090FBCE /* SKLabelRule.m */,
 				BF34789B168427BD0090FBCE /* SKPopRule.h */,
 				BF34789C168427BD0090FBCE /* SKPopRule.m */,
 				BFF05CAF169417430086583F /* SKPopIntoVarRule.h */,
 				BFF05CB0169417430086583F /* SKPopIntoVarRule.m */,
+				BFF05CC4169566810086583F /* SKSetVarRule.h */,
+				BFF05CC5169566820086583F /* SKSetVarRule.m */,
 			);
 			name = Rules;
 			path = Engine/Rules;
@@ -300,6 +307,7 @@
 				BFF05CB1169417440086583F /* SKPopIntoVarRule.h in Headers */,
 				BFF05CB61694DE830086583F /* SKCreateVarRule.h in Headers */,
 				BFF05CBB1694E1790086583F /* SKAssignVarRule.h in Headers */,
+				BFF05CC6169566820086583F /* SKSetVarRule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +408,7 @@
 				BFF05CB2169417440086583F /* SKPopIntoVarRule.m in Sources */,
 				BFF05CB71694DE830086583F /* SKCreateVarRule.m in Sources */,
 				BFF05CBC1694E1790086583F /* SKAssignVarRule.m in Sources */,
+				BFF05CC7169566820086583F /* SKSetVarRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +431,7 @@
 				BFF05CB3169417440086583F /* SKPopIntoVarRule.m in Sources */,
 				BFF05CB81694DE830086583F /* SKCreateVarRule.m in Sources */,
 				BFF05CBD1694E1790086583F /* SKAssignVarRule.m in Sources */,
+				BFF05CC8169566820086583F /* SKSetVarRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
