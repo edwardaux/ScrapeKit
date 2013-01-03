@@ -10,6 +10,14 @@
 
 @implementation SKDebugger
 
+-(id)init {
+	self = [super init];
+	if (self != nil) {
+		_indent = @"";
+	}
+	return self;
+}
+
 -(void)enteringFunction:(SKFunction *)function textStack:(NSArray *)textStack {
 	_indent = [_indent stringByAppendingString:@"  "];
 }
@@ -23,7 +31,7 @@
 }
 
 -(void)outputMessage:(SKRule *)rule message:(NSString *)message {
-	NSLog(@"%@%@[%@] %@", _indent, [rule function], [rule verb], message);
+	NSLog(@"%@%@[%@] %@", _indent, [[rule function] name], [rule verb], message);
 }
 
 -(void)dumpTextStack:(NSArray *)textStack {

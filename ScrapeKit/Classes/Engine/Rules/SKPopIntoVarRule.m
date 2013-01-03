@@ -22,6 +22,10 @@
 	if (buffer != nil)
 		value = [buffer stringValue];
 
+	if ([engine isDebugging]) {
+		[[engine debugger] outputMessage:self message:[NSString stringWithFormat:@"Popping \"%@\" into %@", [buffer debugDescription], DEBUG_PROP(variableName, propertyName)]];
+	}
+	
 	return [self saveValue:value intoVariable:variableName propertyName:propertyName engine:engine];
 }
 

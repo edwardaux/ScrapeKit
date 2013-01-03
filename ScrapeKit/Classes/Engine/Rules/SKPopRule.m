@@ -12,6 +12,11 @@
 
 -(BOOL)executeInFrame:(SKFrame *)frame function:(SKFunction *)function engine:(SKEngine *)engine {
 	SKTextBuffer *buffer = [engine pop];
+	
+	if ([engine isDebugging]) {
+		[[engine debugger] outputMessage:self message:[NSString stringWithFormat:@"Popping \"%@\"", [buffer debugDescription]]];
+	}
+
 	return buffer != nil;
 }
 

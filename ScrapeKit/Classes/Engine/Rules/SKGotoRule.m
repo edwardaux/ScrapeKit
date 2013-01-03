@@ -12,6 +12,11 @@
 
 -(BOOL)executeInFrame:(SKFrame *)frame function:(SKFunction *)function engine:(SKEngine *)engine {
 	NSString *label = [self param:0];
+
+	if ([engine isDebugging]) {
+		[[engine debugger] outputMessage:self message:[NSString stringWithFormat:@"Jumping to \"%@\"", label]];
+	}
+	
 	return [self doGoto:label frame:frame function:function];
 }
 

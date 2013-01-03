@@ -10,6 +10,8 @@
 @class SKFunction;
 @class SKFrame;
 
+#define DEBUG_PROP(var, prop) [NSString stringWithFormat:@"%@%@%@", var, prop!=nil?@".":@"", prop!=nil?prop:@""]
+
 @interface SKRule : NSObject
 
 @property (nonatomic, weak) SKFunction *function;

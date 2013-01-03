@@ -12,6 +12,11 @@
 
 -(BOOL)executeInFrame:(SKFrame *)frame function:(SKFunction *)function engine:(SKEngine *)engine {
 	NSString *functionName = [self param:0];
+
+	if ([engine isDebugging]) {
+		[[engine debugger] outputMessage:self message:[NSString stringWithFormat:@"Invoking \"%@\"", functionName]];
+	}
+
 	return [engine executeFunction:functionName callingRule:self];
 }
 

@@ -12,6 +12,11 @@
 
 -(BOOL)executeInFrame:(SKFrame *)frame function:(SKFunction *)function engine:(SKEngine *)engine {
 	NSString *label = [self param:0];
+
+	if ([engine isDebugging]) {
+		[[engine debugger] outputMessage:self message:[NSString stringWithFormat:@"Evaluating last failure (lastSuccess=%@)", [engine lastRuleWasSuccessful]?@"YES":@"NO"]];
+	}
+	
 	if (![engine lastRuleWasSuccessful])
 		return [self doGoto:label frame:frame function:function];
 	else
