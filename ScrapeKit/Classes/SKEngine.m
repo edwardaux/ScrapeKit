@@ -17,10 +17,16 @@
 		_functionMap = [NSMutableDictionary dictionary];
 		[self setDebugger:nil];
 		
-		[self addRuleImplementationClass:[SKLabelRule class]  forVerb:@"LABEL"];
-		[self addRuleImplementationClass:[SKGotoRule class]   forVerb:@"GOTO"];
-		[self addRuleImplementationClass:[SKInvokeRule class] forVerb:@"INVOKE"];
-		[self addRuleImplementationClass:[SKPopRule class]    forVerb:@"POP"];
+		[self addRuleImplementationClass:[SKAssignVarRule class]  forVerb:@"ASSIGNVAR"];
+		[self addRuleImplementationClass:[SKCreateVarRule class]  forVerb:@"CREATEVAR"];
+		[self addRuleImplementationClass:[SKGotoRule class]       forVerb:@"GOTO"];
+		[self addRuleImplementationClass:[SKIfSuccessRule class]  forVerb:@"IFSUCCESS"];
+		[self addRuleImplementationClass:[SKIfFailureRule class]  forVerb:@"IFFAILURE"];
+		[self addRuleImplementationClass:[SKInvokeRule class]     forVerb:@"INVOKE"];
+		[self addRuleImplementationClass:[SKLabelRule class]      forVerb:@"LABEL"];
+		[self addRuleImplementationClass:[SKPopRule class]        forVerb:@"POP"];
+		[self addRuleImplementationClass:[SKPopIntoVarRule class] forVerb:@"POPINTOVAR"];
+		[self addRuleImplementationClass:[SKSetVarRule class]     forVerb:@"SETVAR"];
 	}
 	return self;
 }
@@ -65,7 +71,7 @@
 		}
 		else if ([ruleString hasPrefix:@":"]) {
 			// a label
-			SKRule *rule = [self newRuleForVerb:ruleString error:error];
+			SKRule *rule = [self newRuleForVerb:@"LABEL" error:error];
 			[rule setVerb:@"LABEL"];
 			[rule setParams:@[ruleString]];
 			[rule setFunction:currentFunction];
