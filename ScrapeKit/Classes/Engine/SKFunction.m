@@ -14,6 +14,7 @@
 	self = [super init];
 	if (self != nil) {
 		[self setName:name];
+		[self setRules:[NSMutableArray array]];
 	}
 	return self;
 }
