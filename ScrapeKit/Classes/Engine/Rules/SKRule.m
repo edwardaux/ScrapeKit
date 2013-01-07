@@ -44,22 +44,22 @@
 }
 
 -(BOOL)saveValue:(id)value intoVariable:(NSString *)variableName propertyName:(NSString *)propertyName engine:(SKEngine *)engine {
+	return [self saveValue:value intoVariable:variableName propertyName:propertyName engine:engine saveInto:YES];
+}
+
+-(BOOL)saveValue:(id)value intoVariable:(NSString *)variableName propertyName:(NSString *)propertyName engine:(SKEngine *)engine saveInto:(BOOL)saveInto {
 	BOOL ableToBeSaved = YES;
 	id variable = [engine variableFor:variableName];
 	if (variable == nil) {
-		// no pre-existing variable, so we're going to save it as a string
+		// no pre-existing variable, so we're going to save it directly
 		[engine setVariableFor:variableName value:value];
 	}
 	else {
-		if ([variable isKindOfClass:[NSString class]]) {
-			// replace it
-			[engine setVariableFor:variableName value:value];
-		}
-		else if ([variable isKindOfClass:[NSMutableArray class]]) {
+		if ([variable isKindOfClass:[NSMutableArray class]] && saveInto) {
 			// let's add it to the end of the array
 			[variable addObject:value];
 		}
-		else if ([variable isKindOfClass:[NSMutableDictionary class]]) {
+		else if ([variable isKindOfClass:[NSMutableDictionary class]] && saveInto) {
 			// let's add it as a value in the dictionary (assuming propertyName
 			// is present)
 			if (propertyName != nil)
@@ -68,12 +68,30 @@
 				ableToBeSaved = NO;
 		}
 		else {
-			// let's add it as a property of a normal object
 			@try {
-				if (propertyName != nil)
-					[variable setValue:value forKey:propertyName];
-				else
-					ableToBeSaved = NO;
+				if (propertyName != nil) {
+					id existingValue = [variable valueForKey:propertyName];
+					if (existingValue == nil) {
+						// existing property doesn't have a value, so we just save it directly
+						[variable setValue:value forKey:propertyName];
+					}
+					else {
+						if ([existingValue isKindOfClass:[NSMutableArray class]] && saveInto) {
+							// let's add it to the end of the array
+							[existingValue addObject:value];
+						}
+						else {
+							// it is already set to an object, but we have no special casing for it,
+							// so we just save directly
+							[variable setValue:value forKey:propertyName];
+						}
+					}
+				}
+				else {
+					// we've found an variable called 'variableName' but it isn't
+					// one of the special cases, so we just replace it.
+					[engine setVariableFor:variableName value:value];
+				}
 			}
 			@catch (NSException *exception) {
 				ableToBeSaved = NO;

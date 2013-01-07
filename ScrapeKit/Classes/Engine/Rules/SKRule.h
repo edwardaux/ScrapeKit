@@ -24,5 +24,6 @@
 -(NSString *)param:(NSUInteger)index;
 -(BOOL)doGoto:(NSString *)label frame:(SKFrame *)frame function:(SKFunction *)function;
 -(BOOL)saveValue:(id)value intoVariable:(NSString *)variableName propertyName:(NSString *)propertyName engine:(SKEngine *)engine;
+-(BOOL)saveValue:(id)value intoVariable:(NSString *)variableName propertyName:(NSString *)propertyName engine:(SKEngine *)engine saveInto:(BOOL)saveInto;
 
 @end

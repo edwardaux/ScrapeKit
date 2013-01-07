@@ -27,7 +27,7 @@
 	else {
 		id value = [[clazz alloc] init];
 		if (value != nil)
-			return [self saveValue:value intoVariable:variableName propertyName:nil engine:engine];
+			return [self saveValue:value intoVariable:variableName propertyName:nil engine:engine saveInto:NO];
 		else {
 			if ([engine isDebugging])
 				[[engine debugger] outputMessage:self message:[NSString stringWithFormat:@"Unable to instantiate class \"%@\"", className]];
