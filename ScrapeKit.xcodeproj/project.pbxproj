@@ -106,6 +106,7 @@
 		BF347897168425820090FBCE /* SKInvokeRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKInvokeRule.m; sourceTree = "<group>"; };
 		BF34789B168427BD0090FBCE /* SKPopRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPopRule.h; sourceTree = "<group>"; };
 		BF34789C168427BD0090FBCE /* SKPopRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPopRule.m; sourceTree = "<group>"; };
+		BFD015E7169B77A900DCF61D /* scrapekit.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = scrapekit.md; sourceTree = "<group>"; };
 		BFD9AD441681A787007F158A /* SKFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKFunction.h; path = Engine/SKFunction.h; sourceTree = "<group>"; };
 		BFD9AD451681A787007F158A /* SKFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKFunction.m; path = Engine/SKFunction.m; sourceTree = "<group>"; };
 		BFD9AD491681A7DC007F158A /* SKEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKEngine.h; sourceTree = "<group>"; };
@@ -178,6 +179,7 @@
 		BF2DCA4D1680FD9700C26D6E = {
 			isa = PBXGroup;
 			children = (
+				BFD015E7169B77A900DCF61D /* scrapekit.md */,
 				BFF05CAC169392590086583F /* Warnings.xcconfig */,
 				BF2DCA621680FD9700C26D6E /* ScrapeKit */,
 				BF2DCA5B1680FD9700C26D6E /* Frameworks */,
