@@ -18,6 +18,10 @@
 	BOOL includeToEOF = [@"includeToEOF" isEqualToString:[self param:4]];
 	
 	SKTextBuffer *buffer = [engine peek];
+	if ([engine isDebugging]) {
+		[[engine debugger] outputMessage:self message:[NSString stringWithFormat:@"Looking between \"%@\" and \"%@\" in \"%@\"", string1, string2, [buffer debugDescription]]];
+	}
+
 	SKTextBuffer *output = [buffer betweenString1:string1 include1:include1 string2:string2 include2:include2 includeToEOF:includeToEOF];
 	if (output != nil) {
 		// great, found something
