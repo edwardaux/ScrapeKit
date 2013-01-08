@@ -15,6 +15,8 @@
 
 	if ([engine isDebugging]) {
 		[[engine debugger] outputMessage:self message:[NSString stringWithFormat:@"Invoking \"%@\"", functionName]];
+		[[engine debugger] outputMessage:self message:[NSString stringWithFormat:@"  Stack=\n"]];
+		[engine dumpTextStack];
 	}
 
 	return [engine executeFunction:functionName callingRule:self];
