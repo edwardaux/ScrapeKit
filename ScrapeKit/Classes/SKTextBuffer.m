@@ -19,7 +19,7 @@
 	if (self != nil) {
 		_text = string;
 		_range = range;
-		_head = 0;
+		[self reset];
 	}
 	return self;
 }
