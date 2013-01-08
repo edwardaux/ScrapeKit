@@ -31,7 +31,10 @@
 }
 
 -(void)outputMessage:(SKRule *)rule message:(NSString *)message {
-	NSLog(@"%@%@[%@] %@", _indent, [[rule function] name], [rule verb], message);
+	NSString *ruleName = [rule verb];
+	if ([rule isKindOfClass:[SKLabelRule class]])
+		ruleName = [(SKLabelRule *)rule label];
+	NSLog(@"%@%@[%@] %@", _indent, [[rule function] name], ruleName, message);
 }
 
 -(void)dumpTextStack:(NSArray *)textStack {
