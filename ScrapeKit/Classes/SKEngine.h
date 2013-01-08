@@ -39,6 +39,7 @@
 // Normally called from within rule implementations
 // -------------------------------------------------------------------------------
 -(BOOL)isDebugging;
+-(void)dumpTextStack;
 -(void)push:(SKTextBuffer *)buffer;
 -(SKTextBuffer *)pop;
 -(SKTextBuffer *)peek;

@@ -18,5 +18,6 @@
 -(void)exitingFunction:(SKFunction *)function textStack:(NSArray *)textStack;
 -(void)executingRule:(SKRule *)rule textStack:(NSArray *)textStack;
 -(void)outputMessage:(SKRule *)rule message:(NSString *)message;
+-(void)dumpTextStack:(NSArray *)textStack;
 
 @end
