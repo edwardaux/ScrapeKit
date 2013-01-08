@@ -22,4 +22,5 @@
 #import "SKLabelRule.h"
 #import "SKPopRule.h"
 #import "SKPopIntoVarRule.h"
+#import "SKPushBetweenRule.h"
 #import "SKSetVarRule.h"

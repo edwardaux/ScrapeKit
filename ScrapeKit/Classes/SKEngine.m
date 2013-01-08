@@ -17,16 +17,17 @@
 		_functionMap = [NSMutableDictionary dictionary];
 		[self setDebugger:nil];
 		
-		[self addRuleImplementationClass:[SKAssignVarRule class]  forVerb:@"ASSIGNVAR"];
-		[self addRuleImplementationClass:[SKCreateVarRule class]  forVerb:@"CREATEVAR"];
-		[self addRuleImplementationClass:[SKGotoRule class]       forVerb:@"GOTO"];
-		[self addRuleImplementationClass:[SKIfSuccessRule class]  forVerb:@"IFSUCCESS"];
-		[self addRuleImplementationClass:[SKIfFailureRule class]  forVerb:@"IFFAILURE"];
-		[self addRuleImplementationClass:[SKInvokeRule class]     forVerb:@"INVOKE"];
-		[self addRuleImplementationClass:[SKLabelRule class]      forVerb:@"LABEL"];
-		[self addRuleImplementationClass:[SKPopRule class]        forVerb:@"POP"];
-		[self addRuleImplementationClass:[SKPopIntoVarRule class] forVerb:@"POPINTOVAR"];
-		[self addRuleImplementationClass:[SKSetVarRule class]     forVerb:@"SETVAR"];
+		[self addRuleImplementationClass:[SKAssignVarRule class]   forVerb:@"ASSIGNVAR"];
+		[self addRuleImplementationClass:[SKCreateVarRule class]   forVerb:@"CREATEVAR"];
+		[self addRuleImplementationClass:[SKGotoRule class]        forVerb:@"GOTO"];
+		[self addRuleImplementationClass:[SKIfSuccessRule class]   forVerb:@"IFSUCCESS"];
+		[self addRuleImplementationClass:[SKIfFailureRule class]   forVerb:@"IFFAILURE"];
+		[self addRuleImplementationClass:[SKInvokeRule class]      forVerb:@"INVOKE"];
+		[self addRuleImplementationClass:[SKLabelRule class]       forVerb:@"LABEL"];
+		[self addRuleImplementationClass:[SKPopRule class]         forVerb:@"POP"];
+		[self addRuleImplementationClass:[SKPopIntoVarRule class]  forVerb:@"POPINTOVAR"];
+		[self addRuleImplementationClass:[SKPushBetweenRule class] forVerb:@"PUSHBETWEEN"];
+		[self addRuleImplementationClass:[SKSetVarRule class]      forVerb:@"SETVAR"];
 	}
 	return self;
 }
