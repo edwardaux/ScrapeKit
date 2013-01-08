@@ -73,7 +73,7 @@
 
 -(NSString *)debugDescription {
 	NSUInteger leadingTrailing = 30;
-	NSString *orig = [self stringValue];
+	NSString *orig = [self remainingStringValue];
 	orig = [orig stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
 	orig = [orig stringByReplacingOccurrencesOfString:@"\r" withString:@" "];
 	if ([orig length] < 80)
