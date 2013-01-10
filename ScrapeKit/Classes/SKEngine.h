@@ -10,6 +10,7 @@
 @class SKFunction;
 @class SKRule;
 @class SKTextBuffer;
+@protocol SKDebugger;
 
 @interface SKEngine : NSObject {
 	NSMutableDictionary *_ruleImplementations;
@@ -20,7 +21,7 @@
 	NSMutableDictionary *_variablePool;
 }
 
-@property (nonatomic, strong) SKDebugger *debugger;
+@property (nonatomic, strong) id<SKDebugger> debugger;
 @property (nonatomic)         BOOL lastRuleWasSuccessful;
 
 // -------------------------------------------------------------------------------

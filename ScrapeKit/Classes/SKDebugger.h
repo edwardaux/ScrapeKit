@@ -10,14 +10,18 @@
 @class SKFrame;
 @class SKRule;
 
-@interface SKDebugger : NSObject {
-	NSString *_indent;
-}
+@protocol SKDebugger
 
 -(void)enteringFunction:(SKFunction *)function textStack:(NSArray *)textStack;
 -(void)exitingFunction:(SKFunction *)function textStack:(NSArray *)textStack;
 -(void)executingRule:(SKRule *)rule textStack:(NSArray *)textStack;
 -(void)outputMessage:(SKRule *)rule message:(NSString *)message;
 -(void)dumpTextStack:(NSArray *)textStack;
+
+@end
+
+@interface SKConsoleDebugger : NSObject<SKDebugger> {
+	NSString *_indent;
+}
 
 @end

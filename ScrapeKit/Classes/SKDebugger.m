@@ -8,7 +8,7 @@
 
 #import <ScrapeKit/ScrapeKit.h>
 
-@implementation SKDebugger
+@implementation SKConsoleDebugger
 
 -(id)init {
 	self = [super init];
