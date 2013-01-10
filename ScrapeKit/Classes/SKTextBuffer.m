@@ -37,7 +37,6 @@
 	else
 		head = include1 ? range.location : NSMaxRange(range);
 	
-	NSUInteger newHead = head;
 	// now move the tail to string2
 	NSUInteger tail = head;
 	// not much point looking if we haven't found string1
@@ -48,16 +47,13 @@
 		if (range.location == NSNotFound) {
 			if (includeToEOF) {
 				tail = NSMaxRange(_range);
-				newHead = tail;
 			}
 			else {
 				tail = NSNotFound;
-				newHead = NSNotFound;
 			}
 		}
 		else {
 			tail = include2 ? NSMaxRange(range) : range.location;
-			newHead = NSMaxRange(range);
 		}
 	}
 	
@@ -65,7 +61,7 @@
 		return nil;
 	else {
 		// commit the consumed head position
-		_head = newHead;
+		_head = tail;
 		return [[SKTextBuffer alloc] initWithString:_text range:NSMakeRange(head, tail-head)];
 	}
 }
