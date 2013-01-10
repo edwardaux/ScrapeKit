@@ -34,14 +34,19 @@
 	NSString *ruleName = [rule verb];
 	if ([rule isKindOfClass:[SKLabelRule class]])
 		ruleName = [(SKLabelRule *)rule label];
-	NSLog(@"%@%@[%@] %@", _indent, [[rule function] name], ruleName, message);
+	NSString *msg = [NSString stringWithFormat:@"%@%@[%@] %@", _indent, [[rule function] name], ruleName, message];
+	[self emitMessage:msg];
 }
 
 -(void)dumpTextStack:(NSArray *)textStack {
 	NSUInteger i = 0;
 	for (SKTextBuffer *buffer in [textStack reverseObjectEnumerator]) {
-		NSLog(@"%@  %@", _indent, [NSString stringWithFormat:@"%ld %@", (unsigned long)i++, [buffer debugDescription]]);
+		NSString *msg = [NSString stringWithFormat:@"%@%ld %@", _indent, (unsigned long)i++, [buffer debugDescription]];
+		[self emitMessage:msg];
 	}
 }
 
+-(void)emitMessage:(NSString *)message {
+	NSLog(@"%@", message);
+}
 @end

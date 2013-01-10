@@ -24,4 +24,6 @@
 	NSString *_indent;
 }
 
+-(void)emitMessage:(NSString *)message;
+
 @end
