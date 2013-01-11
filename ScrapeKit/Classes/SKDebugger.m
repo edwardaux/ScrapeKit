@@ -32,10 +32,16 @@
 }
 
 -(void)outputMessage:(SKRule *)rule message:(NSString *)message {
-	NSString *ruleName = [rule verb];
-	if ([rule isKindOfClass:[SKLabelRule class]])
-		ruleName = [(SKLabelRule *)rule label];
-	NSString *msg = [NSString stringWithFormat:@"%@%@[%@] %@", _indent, [[rule function] name], ruleName, message];
+	NSString *functionName = @"";
+	NSString *ruleName = @"variables";
+	if (rule != nil) {
+		functionName = [[rule function] name];
+		ruleName = [rule verb];
+		if ([rule isKindOfClass:[SKLabelRule class]])
+			ruleName = [(SKLabelRule *)rule label];
+	}
+	
+	NSString *msg = [NSString stringWithFormat:@"%@%@[%@] %@", _indent, functionName, ruleName, message];
 	[self emitMessage:msg];
 }
 

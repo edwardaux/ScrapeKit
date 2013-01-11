@@ -220,6 +220,8 @@
 
 	[self push:[[SKTextBuffer alloc] initWithString:inputString]];
 	[self executeFunction:@"main" callingRule:nil];
+	if ([self isDebugging])
+		[[self debugger] outputMessage:nil message:[_variablePool debugDescription]];
 }
 
 -(BOOL)executeFunction:(NSString *)functionName callingRule:(SKRule *)callingRule {
