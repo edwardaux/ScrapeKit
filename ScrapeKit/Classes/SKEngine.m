@@ -278,8 +278,4 @@
 	_variablePool[varName] = value;
 }
 
--(void)dumpTextStack {
-	if ([self isDebugging])
-		[[self debugger] dumpTextStack:_textStack];
-}
 @end

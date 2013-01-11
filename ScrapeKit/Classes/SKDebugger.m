@@ -20,6 +20,7 @@
 
 -(void)enteringFunction:(SKFunction *)function textStack:(NSArray *)textStack {
 	_indent = [_indent stringByAppendingString:@"  "];
+	[self dumpTextStack:textStack];
 }
 
 -(void)exitingFunction:(SKFunction *)function textStack:(NSArray *)textStack {
@@ -41,7 +42,7 @@
 -(void)dumpTextStack:(NSArray *)textStack {
 	NSUInteger i = 0;
 	for (SKTextBuffer *buffer in [textStack reverseObjectEnumerator]) {
-		NSString *msg = [NSString stringWithFormat:@"%@%ld %@", _indent, (unsigned long)i++, [buffer debugDescription]];
+		NSString *msg = [NSString stringWithFormat:@"%@ > %ld %@", _indent, (unsigned long)i++, [buffer debugDescription]];
 		[self emitMessage:msg];
 	}
 }
