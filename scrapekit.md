@@ -68,7 +68,7 @@ You can pass data into functions by pushing it onto the stack before calling it.
 Leading whitespace is ignored, but encouraged to maintain readability.
 
 #### Strings ####
-ScrapeKit is very simplistic in that all function names, labels, rule names, parameters are treated as simple strings. If you need to, say, pass a parameter to a rule that has embedded spaces, you must wrap it in `"` characters.  If your parameter contains a `"` character, then it must be escaped with another `"` character. For example, `"<a href=""blah.html"">"`
+ScrapeKit is very simplistic in that all function names, labels, rule names, parameters are treated as simple strings. If you need to, say, pass a parameter to a rule that has embedded spaces, you must wrap it in `"` characters.  If your parameter contains a `"` character, then it must be escaped with a `\` character. For example, `"<a href=\"blah.html\">"`
 
 ### Flow Control ###
 There are a couple of rules that can be used to control the flow within your script.  Specifically, `Goto` and `Call`.  `Call` simply invokes another ScrapeKit function (and can be used recursively).  `Goto` shifts the execution to the specified *label*.  A *label* can be defined anywhere in a function and looks like `:mylabel`.  For example:
