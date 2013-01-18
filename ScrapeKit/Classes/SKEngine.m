@@ -102,7 +102,10 @@
 
 -(SKRule *)compileRule:(NSString *)ruleString inFunction:(SKFunction *)function error:(NSError **)error {
 	
-	NSArray *tokens = [self tokenizeRule:ruleString];
+	NSArray *tokens = [self tokenizeRule:ruleString error:error];
+	if (tokens == nil)
+		return nil;
+	
 	NSString *verb = tokens[0];
 	NSArray *params = [tokens subarrayWithRange:NSMakeRange(1, [tokens count]-1)];
 	
@@ -140,76 +143,20 @@
 	return (SKRule *)object;
 }
 
--(NSArray *)tokenizeRule:(NSString *)paramString {
-	// TODO handle quoted strings
-	/*
-	NSMutableArray *rows = [NSMutableArray array];
-	
-	// Get newline character set
-	NSMutableCharacterSet *newlineCharacterSet = (id)[NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
-	[newlineCharacterSet formIntersectionWithCharacterSet:[[NSCharacterSet whitespaceCharacterSet] invertedSet]];
-	
-	// Characters that are important to the parser
-	NSMutableCharacterSet *importantCharactersSet = (id)[NSMutableCharacterSet characterSetWithCharactersInString:@",\""];
-	[importantCharactersSet formUnionWithCharacterSet:newlineCharacterSet];
-	
-	// Create scanner, and scan string
-	NSScanner *scanner = [NSScanner scannerWithString:self];
-	[scanner setCharactersToBeSkipped:nil];
-	while ( ![scanner isAtEnd] ) {
-		BOOL insideQuotes = NO;
-		BOOL finishedRow = NO;
-		NSMutableArray *columns = [NSMutableArray arrayWithCapacity:10];
-		NSMutableString *currentColumn = [NSMutableString string];
-		while ( !finishedRow ) {
-			NSString *tempString;
-			if ( [scanner scanUpToCharactersFromSet:importantCharactersSet intoString:&tempString] ) {
-				[currentColumn appendString:tempString];
+-(NSArray *)tokenizeRule:(NSString *)paramString error:(NSError **)error {
+	NSMutableArray *tokens = [NSMutableArray array];
+	NSString *pattern = @"(\"(\\\\.|[^\\\"])*\")|(\\S+)";
+	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:error];
+	[regex enumerateMatchesInString:paramString options:NSMatchingReportProgress range:NSMakeRange(0, [paramString length]) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+		if (flags != NSMatchingProgress) {
+			NSString *word = [paramString substringWithRange:[result range]];
+			if ([word hasPrefix:@"\""] && [word hasSuffix:@"\""]) {
+				word = [word substringWithRange:NSMakeRange(1, [word length]-2)];
 			}
-			
-			if ( [scanner isAtEnd] ) {
-				if ( ![currentColumn isEqualToString:@""] ) [columns addObject:currentColumn];
-				finishedRow = YES;
-			}
-			else if ( [scanner scanCharactersFromSet:newlineCharacterSet intoString:&tempString] ) {
-				if ( insideQuotes ) {
-					// Add line break to column text
-					[currentColumn appendString:tempString];
-				}
-				else {
-					// End of row
-					if ( ![currentColumn isEqualToString:@""] ) [columns addObject:currentColumn];
-					finishedRow = YES;
-				}
-			}
-			else if ( [scanner scanString:@"\"" intoString:NULL] ) {
-				if ( insideQuotes && [scanner scanString:@"\"" intoString:NULL] ) {
-					// Replace double quotes with a single quote in the column string.
-					[currentColumn appendString:@"\""];
-				}
-				else {
-					// Start or end of a quoted string.
-					insideQuotes = !insideQuotes;
-				}
-			}
-			else if ( [scanner scanString:@"," intoString:NULL] ) {
-				if ( insideQuotes ) {
-					[currentColumn appendString:@","];
-				}
-				else {
-					// This is a column separating comma
-					[columns addObject:currentColumn];
-					currentColumn = [NSMutableString string];
-					[scanner scanCharactersFromSet:[NSCharacterSet whitespaceCharacterSet] intoString:NULL];
-				}
-			}
+			[tokens addObject:word];
 		}
-		if ( [columns count] > 0 ) [rows addObject:columns];
-	}
-	
-	return rows;
-	 */
-	return [paramString componentsSeparatedByString:@" "];
+	}];
+	return tokens;
 }
 
 #
