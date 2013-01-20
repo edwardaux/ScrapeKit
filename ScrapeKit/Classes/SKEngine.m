@@ -145,6 +145,7 @@
 
 -(NSArray *)tokenizeRule:(NSString *)paramString error:(NSError **)error {
 	NSMutableArray *tokens = [NSMutableArray array];
+	// human readable form:    ("(\\.|[^\"])*")|(\S+)
 	NSString *pattern = @"(\"(\\\\.|[^\\\"])*\")|(\\S+)";
 	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:error];
 	[regex enumerateMatchesInString:paramString options:NSMatchingReportProgress range:NSMakeRange(0, [paramString length]) usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
