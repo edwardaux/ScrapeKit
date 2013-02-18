@@ -11,8 +11,7 @@
 @implementation SKLabelRule
 
 -(NSString *)label {
-	// strip off the leading colon
-	return [[self param:0] substringFromIndex:1];
+	return [self param:0];
 }
 
 -(BOOL)executeInFrame:(SKFrame *)frame function:(SKFunction *)function engine:(SKEngine *)engine {

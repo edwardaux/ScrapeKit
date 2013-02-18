@@ -72,9 +72,10 @@
 		}
 		else if ([ruleString hasPrefix:@":"]) {
 			// a label
+			NSString *labelName = [ruleString substringFromIndex:1];
 			SKRule *rule = [self newRuleForVerb:@"LABEL" error:error];
 			[rule setVerb:@"LABEL"];
-			[rule setParams:@[ruleString]];
+			[rule setParams:@[labelName]];
 			[rule setFunction:currentFunction];
 			[currentFunction addRule:rule];
 		}
