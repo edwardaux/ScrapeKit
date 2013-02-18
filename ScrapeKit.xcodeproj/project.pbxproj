@@ -40,6 +40,7 @@
 		BFD015F1169B7CC400DCF61D /* SKPushBetweenRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD015EF169B7CC400DCF61D /* SKPushBetweenRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFD015F2169B7CC400DCF61D /* SKPushBetweenRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD015F0169B7CC400DCF61D /* SKPushBetweenRule.m */; };
 		BFD015F3169B7CC400DCF61D /* SKPushBetweenRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD015F0169B7CC400DCF61D /* SKPushBetweenRule.m */; };
+		BFD0879616D2D338009BB1EB /* documentation.md in Resources */ = {isa = PBXBuildFile; fileRef = BFD0879516D2D338009BB1EB /* documentation.md */; };
 		BFD9AD461681A787007F158A /* SKFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD9AD441681A787007F158A /* SKFunction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFD9AD471681A787007F158A /* SKFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD9AD451681A787007F158A /* SKFunction.m */; };
 		BFD9AD481681A787007F158A /* SKFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD9AD451681A787007F158A /* SKFunction.m */; };
@@ -112,6 +113,7 @@
 		BFD015E7169B77A900DCF61D /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
 		BFD015EF169B7CC400DCF61D /* SKPushBetweenRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPushBetweenRule.h; sourceTree = "<group>"; };
 		BFD015F0169B7CC400DCF61D /* SKPushBetweenRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPushBetweenRule.m; sourceTree = "<group>"; };
+		BFD0879516D2D338009BB1EB /* documentation.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = documentation.md; sourceTree = "<group>"; };
 		BFD9AD441681A787007F158A /* SKFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKFunction.h; path = Engine/SKFunction.h; sourceTree = "<group>"; };
 		BFD9AD451681A787007F158A /* SKFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKFunction.m; path = Engine/SKFunction.m; sourceTree = "<group>"; };
 		BFD9AD491681A7DC007F158A /* SKEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKEngine.h; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				BFD015E7169B77A900DCF61D /* readme.md */,
+				BFD0879516D2D338009BB1EB /* documentation.md */,
 				BFF05CAC169392590086583F /* Warnings.xcconfig */,
 				BF2DCA621680FD9700C26D6E /* ScrapeKit */,
 				BF2DCA5B1680FD9700C26D6E /* Frameworks */,
@@ -393,6 +396,7 @@
 			files = (
 				BF2DCA671680FD9700C26D6E /* InfoPlist.strings in Resources */,
 				BFF05CAD169392590086583F /* Warnings.xcconfig in Resources */,
+				BFD0879616D2D338009BB1EB /* documentation.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

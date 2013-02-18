@@ -16,108 +16,128 @@ In this way, your application can be coded against that simple data model (which
 ### Implementation ###
 ScrapeKit uses a *very* simple [stack based machine](http://en.wikipedia.org/wiki/Stack_machine) and [DSL](http://en.wikipedia.org/wiki/Domain-specific_language) to manage the state of the parsing process.  The ScrapeKit engine walks through a set of *rules*, evaluating each one-by-one. For example:
 
-<pre lang="text">
-# the following rule pushes text between "XXX" and "YYY"
-# onto the stack (including the XXX component). For
-# example, if the input text was:
-#   Hello there XXX how are you YYY good thanks
-# the text that would be pushed onto the stack would be:
-#   "XXX how are you "
-
-PushBetween "XXX" include "YYY" exclude
-
-# and then the following saves that value into a property
-# called foo
-
-PopInto foo
-</pre>
+	# the following rule pushes text between "XXX" and "YYY"
+	# onto the stack (including the XXX component). For
+	# example, if the input text was:
+	#   Hello there XXX how are you YYY good thanks
+	# the text that would be pushed onto the stack would be:
+	#   "XXX how are you "
+	
+	PushBetween "XXX" include "YYY" exclude
+	
+	# and then the following saves that value into a property
+	# called foo
+	
+	PopInto foo
 
 The ScrapeKit language essentially maintains a cursor that points to some location in the original text.  It allows you to move that cursor back and forward and store pieces of text along the way.
 
 In addition to the existing built-in rules, you can easily add your own custom rules.
 
-## Script Layout ##
-The general layout of a script file can contain the following elements:
-### Comments ###
-Comments are defined as anything after a `#` character.  Everything after that to the end of the line is ignored.
+## A Simple Example ##
+A very simple example is as follows.  Imagine that your input looks like:
 
-### Functions / Rules ###
-You can define your own functions in a ScrapeKit script by using `@xxxx` where `xxxx` is the name of your function.  Exit of a function occurs when there are no more rules to evaluate.  Some example functions are defined below:
+	<ol>
+		<li>abc</li>
+		<li>def</li>
+		<li>ghi</li>
+	</ol>
 
-<pre lang="text">
-@myfunc
-	# push some data onto the stack
-	PushBetween "&lt;div&gt;" exclude "&lt;/div&gt;" exclude
-	# now call another function to do something
-	Call anotherfunc
-	# and save the result
-	PopInto myvar
+To parse this, you might create a script that looks something like:
+
+	@main
+		createvar NSMutableArray elements
+		pushbetween <li> exclude </li> exclude
+		iffailure end
+		:loop
+			popIntoVar elements
+			pushbetween <li> exclude </li> exclude
+			iffailure end
+			goto loop
+	:end
+
+And to invoke ScrapeKit to use this script, you would use (assuming ARC):
+
+	NSString *script = ...;
+	NSString *data   = ...;
 	
-@anotherfunc
-	# do some stuff with the input and push result onto the stack
-	# ...
-	PushBetween "&lt;a&gt;" exclude "&lt;/a&gt;" exclude
-</pre>
+	SKEngine *engine = [[SKEngine alloc] init];
+	[engine compile:script error:nil];
 
-You can pass data into functions by pushing it onto the stack before calling it.  Likewise, if a function needs to return data, it can push it onto the stack before it returns.
+	[engine parse:data];
 
-The ScrapeKit engine expects, at a minimum, a function called `main` that will be used as the entry point for the execution.
+	NSMutableArray *elements = [engine variableFor:@"elements"];
+	for (NSString *element in elements)
+		NSLog(@"List element = %@", element);
 
-### Labels ###
-You can define a label by using a colon-prefixed label. eg. `:xxxx`  A label is normally used to control script logic flow in conjunction with the `Goto` rule.
+## A Slightly More Complex Example ##
+A more likely scenario, though, is that you want to parse the data into actual objects.  So, imagine the case where you want to go through a HTML table a row at a time, pulling out each cell value into an object's properties.
 
-### Indenting ###
-Leading whitespace is ignored, but encouraged to maintain readability.
+	<table>
+		<tr><td>10 Smith St</td><td>Hopetown</td><td>2222</td></tr>
+		<tr><td>20 Jones Rd</td><td>Danville</td><td>5555</td></tr>
+		<tr><td>30 Brown Ln</td><td>Cessnock</td><td>7777</td></tr>
+	</table>
 
-### Strings ###
-ScrapeKit is very simplistic in that all function names, labels, rule names, parameters are treated as simple strings. If you need to define a string that has embedded spaces, you must enclose it within `"` characters.  If your string contains a `"` character, then it must be escaped with a `\` character. For example, `"<a href=\"blah.html\">"`
+You would most likely have an object model that looks a bit like:
 
-### Flow Control ###
-There are a couple of rules that can be used to control the flow within your script.  Specifically, `IfSuccess`, `IfFailure`, `Goto`, and `Invoke`.  
+	@interface MyAddress : NSObject
+	@property (nonatomic,strong) NSString *street;
+	@property (nonatomic,strong) NSString *city;
+	@property (nonatomic,strong) NSString *postcode;
+	@end
+	
+	@implementation MyAddress
+	@end
 
-* `IfSuccess` and `IfFailure` shifts the execution location to the passed *label* based on the success/failure of the previous rule.  The definition of success or failure varies from rule to rule and can be seen in the header file for the respective rule. For example, see [SKAssignVarRule.h](ScrapeKit/Classes/Engine/Rules/SKAssignVarRule.h).
-* `Invoke` simply invokes another ScrapeKit function (and can be used recursively).  
-* `Goto` unconditionally shifts the execution to the specified *label*. For example:
+To parse this input data the general logic would be:
 
-	<pre lang="text">
-@myfunc
-	:loop
-		PushBetween "X" exclude "Y" include 
-		PopInto blah
-		Invoke someotherfunction
-		Goto loop
-</pre>
+* Create an array to hold all the addresses
+* Extract a row's worth of data (ie. everything between `<tr>` and `</tr>` tags)
+* For each row:
+	* Create a MyAddress object
+	* Walk through the row extracting the values from between each `<td>` tag.
+	* Assign each cell to the appropriate property
+	* Add the address object to the array
 
-## Variable Management ##
-ScrapeKit uses a single global variable pool that is available to all functions and rules within a script.  Each script uses its own variable pool.
+This would result in a script that looks something like:
 
-There several ways data can be stored as variables:
+	@main
+		createvar NSMutableArray addresses
+		pushbetween <tr> exclude </tr> exclude
+		iffailure end
+		:loop
+			invoke handleRow
+			pop
+			pushbetween <tr> exclude </tr> exclude
+			iffailure end
+			goto loop
+	:end
+	
+	@handleRow
+		createvar MyAddress address
+		pushbetween <td> exclude </td> exclude
+		popintovar address street
+		pushbetween <td> exclude </td> exclude
+		popintovar address city
+		pushbetween <td> exclude </td> exclude
+		popintovar address postcode
+		assignvar address addresses
+		
+And would be invoked using something like the following code:
 
-* Saving directly into an `NSString`
-* Adding to a `NSmutableArray`
-* Adding to a `NSMutableDictionary`
-* Setting properties on objects using `setValue:forKey:` 
+	NSString *script = ...;
+	NSString *data   = ...;
 
-## Rules ##
-### Built-in Rules ###
-ScrapeKit comes with a number of pre-built rules that should cover most text parsing cases.  The header files for each contain a more detailed explanation of each rule.
+	SKEngine *engine = [[SKEngine alloc] init];
+	[engine compile:script error:nil];
+	
+	[engine parse:data];
+	
+	NSMutableArray *addresses = [engine variableFor:@"addresses"];
+	for (MyAddress *address in addresses)
+		NSLog(@"%@, %@ %@", [address street], [address city], [address postcode]);
 
-#### Variable Management ####
-* `AssignConst` - Assigns a constant to a variable and/or property.
-* `AssignVar` - Assigns a variable to another variable and/or property.
-* `CreateVar` - Creates a new variable in the global variable pool.
-* `PopIntoVar` - Pops text off the text stack into a variable and/or property.
-
-#### Flow Control ####
-* `Goto` - Unconditionally switches execution to a particular label.
-* `IfSuccess` - Switches execution to a label based on success of previous rule.
-* `IfFailure` - Switches execution to a label based on success of previous rule.
-* `Invoke` - Invokes a sub-function.  Can be used recursively.
-* `Label` - A nop rule that provides a target for the other flow control rules.
-
-#### Stack / Text Management ####
-* `Pop` - Pops a single text buffer off the text stack.
-* `PushBetween` - Searches for a piece of text within other text and pushes it onto the text stack for later processing.
 
 ## When Shouldn't You Use ScrapeKit ##
 Ideally, there shouldn't be a market for ScrapeKit, however, the fact is that scraping data from loosely structured input is still a common scenario.  While ScrapeKit could theoretically be used for the following scenarios, there are far better tools for:
