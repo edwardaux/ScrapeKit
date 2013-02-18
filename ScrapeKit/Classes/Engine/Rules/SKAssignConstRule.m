@@ -1,5 +1,5 @@
 //
-//  SKSetVarRule.m
+//  SKAssignConstRule.m
 //  ScrapeKit
 //
 //  Created by Craig Edwards on 3/01/13.
@@ -8,7 +8,7 @@
 
 #import <ScrapeKit/ScrapeKit.h>
 
-@implementation SKSetVarRule
+@implementation SKAssignConstRule
 
 -(BOOL)executeInFrame:(SKFrame *)frame function:(SKFunction *)function engine:(SKEngine *)engine {
 	NSString *value = [self param:0];

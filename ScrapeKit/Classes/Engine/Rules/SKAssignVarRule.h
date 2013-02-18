@@ -15,20 +15,26 @@
 // Notes:
 //   * Takes the variable identified by srcVariableName and saves it into the global
 //     variable pool as 'dstVariableName'.
-//   * There are a number of different ways this function can be used:
-//       * It will retrieve the value of 'srcVariableName' from the variable pool and
-//           * If 'dstVariableName' is an NSString, it will be replaced with the
-//             new value. 'propertyName' is ignored.
-//           * If 'dstVariableName' is an NSMutableArray, a new element will be added
-//             to the end of the array.  'propertyName' is ignored.
-//           * If 'dstVariableName' is an NSMutableDictionary, a new value will be
-//             added using 'propertyName' as a key.  If 'propertyName' is not passed,
-//             the value will not be saved.
-//           * Else the value of 'srcVariableName' will be passed to the setValue:forKey
-//             method on the existing variable using 'propertyName' as the key.  If
-//             'propertyName' is not passed, the value will be saved.
-//   * If there is no variable named 'srcVariableName', no processing will occur.
-//   * Returns success, unless value is not able to be saved.
+//   * Variable pool handling is as follows:
+//
+//     srcValue = the existing value of 'srcVariableName' in the variable pool
+//     dstValue = the existing value of 'dstVariableName' in the variable pool
+//     if ('srcValue' is not set)
+//       'srcVariableName' will be not be saved
+//     else
+//        if ('dstValue' is an NSString)
+//          it will be replaced with 'srcValue'. 'propertyName' is ignored.
+//        else if ('dstValue' is an NSMutableArray)
+//          'srcValue' will be added to the end of the array. 'propertyName' is ignored.
+//        else if ('dstValue' is an NSMutableDictionary)
+//          'srcValue' will be added using 'propertyName' as a key.  If 'propertyName'
+//          is not passed, 'srcVariable' will not be saved.
+//        else
+//          'srcValue' will be passed to the setValue:forKey method on 'dstValue'
+//          using 'propertyName' as the key.  If 'propertyName' is not passed, 'srcValue'
+//          will not be saved.
+//
+//   * Returns whether the variable is able to be saved.
 // ------------------------------------------------------------------------------------
 @interface SKAssignVarRule : SKRule
 

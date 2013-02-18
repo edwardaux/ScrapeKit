@@ -13,6 +13,7 @@
 #import "SKTextBuffer.h"
 
 #import "SKRule.h"
+#import "SKAssignConstRule.h"
 #import "SKAssignVarRule.h"
 #import "SKCreateVarRule.h"
 #import "SKGotoRule.h"
@@ -23,4 +24,3 @@
 #import "SKPopRule.h"
 #import "SKPopIntoVarRule.h"
 #import "SKPushBetweenRule.h"
-#import "SKSetVarRule.h"

@@ -10,27 +10,33 @@
 
 // ------------------------------------------------------------------------------------
 // Usage:
-//   POPINTOVAR variableName [propertyName]
+//   PUSHBETWEEN string1 {include|exclude} string2 {include|exclude} [includeToEOF]
 //
 // Notes:
-//   * Pops a single SKTextBuffer off the text stack and saves it into the global
-//     variable pool as 'variableName'.
-//   * There are a number of different ways this function can be used:
-//       * If variableName does not already exist in the pool, the value will be saved
-//         as an NSString. In this case, 'propertyName' is ignored.
-//       * Otherwise, it will retrieve the existing value from the variable pool
-//           * If the existing variable is an NSString, it will be replaced with the
-//             new value. 'propertyName' is ignored.
-//           * If the existing variable is an NSMutableArray, a new NSString element
-//             will be added to the end of the array.  'propertyName' is ignored.
-//           * If the existing variable is an NSMutableDictionary, a new NSString value
-//             will be added using 'propertyName' as a key.  If 'propertyName' is not
-//             passed, the value will not be saved.
-//           * Else an NSString value will be passed to the setValue:forKey method on
-//             the existing variable using 'propertyName' as the key.  If 'propertyName'
-//             is not passed, the value will be saved.
-//   * If there is no buffer on the text stack, an empty string will be saved.
-//   * Returns success, unless value is not able to be saved.
+//   * Peeks at the top of the text stack, and attempts to extract the contents between
+//     string1 and string2.  If found, the contents will be pushed onto the stack.
+//   * The {include|exclude} modifiers designate whether string1 and string2 respectively
+//     are included in the text that is pushed onto the stack.
+//   * The 'includeToEOF' keyword is an optional value that will force PUSHBETWEEN to
+//     to match everything up to the end of the input in the case where string2 cannot
+//     be found. This is useful when trying to match lists with trailing delimiters but
+//     the last delimiter may not be present.  See below for an example.
+//
+//   * Returns whether text was matched (ie. whether a new string was pushed onto the
+//     text stack)
+//
+// Examples:
+//   * Assuming '<p>xxx</p>' is on the text stack:
+//       PUSHBETWEEN <p> include </p> exclude            ==>  '<p>xxx'
+//   * Assuming '<p>xxx</p>' is on the text stack:
+//       PUSHBETWEEN <X> exclude </X> include            ==>  no match found
+//   * Assuming 'a,b,c' is on the text stack:
+//       PUSHBETWEEN , exclude , exclude includeToEOF    ==> a
+//       POPINTOVAR myarray
+//       PUSHBETWEEN , exclude , exclude includeToEOF    ==> b
+//       POPINTOVAR myarray
+//       PUSHBETWEEN , exclude , exclude includeToEOF    ==> c
+//       POPINTOVAR myarray
 // ------------------------------------------------------------------------------------
 @interface SKPushBetweenRule : SKRule
 

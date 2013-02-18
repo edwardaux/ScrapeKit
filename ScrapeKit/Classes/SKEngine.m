@@ -17,6 +17,7 @@
 		_functionMap = [NSMutableDictionary dictionary];
 		[self setDebugger:nil];
 		
+		[self addRuleImplementationClass:[SKAssignConstRule class] forVerb:@"ASSIGNCONST"];
 		[self addRuleImplementationClass:[SKAssignVarRule class]   forVerb:@"ASSIGNVAR"];
 		[self addRuleImplementationClass:[SKCreateVarRule class]   forVerb:@"CREATEVAR"];
 		[self addRuleImplementationClass:[SKGotoRule class]        forVerb:@"GOTO"];
@@ -27,7 +28,6 @@
 		[self addRuleImplementationClass:[SKPopRule class]         forVerb:@"POP"];
 		[self addRuleImplementationClass:[SKPopIntoVarRule class]  forVerb:@"POPINTOVAR"];
 		[self addRuleImplementationClass:[SKPushBetweenRule class] forVerb:@"PUSHBETWEEN"];
-		[self addRuleImplementationClass:[SKSetVarRule class]      forVerb:@"SETVAR"];
 	}
 	return self;
 }
