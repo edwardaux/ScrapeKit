@@ -15,6 +15,7 @@
 #import "SKRule.h"
 #import "SKAssignConstRule.h"
 #import "SKAssignVarRule.h"
+#import "SKBreakpointRule.h"
 #import "SKCreateVarRule.h"
 #import "SKGotoRule.h"
 #import "SKIfSuccessRule.h"

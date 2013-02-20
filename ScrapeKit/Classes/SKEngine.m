@@ -19,6 +19,7 @@
 		
 		[self addRuleImplementationClass:[SKAssignConstRule class] forVerb:@"ASSIGNCONST"];
 		[self addRuleImplementationClass:[SKAssignVarRule class]   forVerb:@"ASSIGNVAR"];
+		[self addRuleImplementationClass:[SKBreakpointRule class]  forVerb:@"BREAK"];
 		[self addRuleImplementationClass:[SKCreateVarRule class]   forVerb:@"CREATEVAR"];
 		[self addRuleImplementationClass:[SKGotoRule class]        forVerb:@"GOTO"];
 		[self addRuleImplementationClass:[SKIfSuccessRule class]   forVerb:@"IFSUCCESS"];

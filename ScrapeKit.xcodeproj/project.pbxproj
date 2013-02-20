@@ -41,6 +41,9 @@
 		BFD015F2169B7CC400DCF61D /* SKPushBetweenRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD015F0169B7CC400DCF61D /* SKPushBetweenRule.m */; };
 		BFD015F3169B7CC400DCF61D /* SKPushBetweenRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD015F0169B7CC400DCF61D /* SKPushBetweenRule.m */; };
 		BFD0879616D2D338009BB1EB /* documentation.md in Resources */ = {isa = PBXBuildFile; fileRef = BFD0879516D2D338009BB1EB /* documentation.md */; };
+		BFD0879916D2E2AA009BB1EB /* SKBreakpointRule.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD0879716D2E2A7009BB1EB /* SKBreakpointRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BFD0879A16D2E2AA009BB1EB /* SKBreakpointRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD0879816D2E2A9009BB1EB /* SKBreakpointRule.m */; };
+		BFD0879B16D2E2AA009BB1EB /* SKBreakpointRule.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD0879816D2E2A9009BB1EB /* SKBreakpointRule.m */; };
 		BFD9AD461681A787007F158A /* SKFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD9AD441681A787007F158A /* SKFunction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BFD9AD471681A787007F158A /* SKFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD9AD451681A787007F158A /* SKFunction.m */; };
 		BFD9AD481681A787007F158A /* SKFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD9AD451681A787007F158A /* SKFunction.m */; };
@@ -114,6 +117,8 @@
 		BFD015EF169B7CC400DCF61D /* SKPushBetweenRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPushBetweenRule.h; sourceTree = "<group>"; };
 		BFD015F0169B7CC400DCF61D /* SKPushBetweenRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPushBetweenRule.m; sourceTree = "<group>"; };
 		BFD0879516D2D338009BB1EB /* documentation.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = documentation.md; sourceTree = "<group>"; };
+		BFD0879716D2E2A7009BB1EB /* SKBreakpointRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBreakpointRule.h; sourceTree = "<group>"; };
+		BFD0879816D2E2A9009BB1EB /* SKBreakpointRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBreakpointRule.m; sourceTree = "<group>"; };
 		BFD9AD441681A787007F158A /* SKFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKFunction.h; path = Engine/SKFunction.h; sourceTree = "<group>"; };
 		BFD9AD451681A787007F158A /* SKFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKFunction.m; path = Engine/SKFunction.m; sourceTree = "<group>"; };
 		BFD9AD491681A7DC007F158A /* SKEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKEngine.h; sourceTree = "<group>"; };
@@ -162,6 +167,8 @@
 				BFF05CC5169566820086583F /* SKAssignConstRule.m */,
 				BFF05CB91694E1780086583F /* SKAssignVarRule.h */,
 				BFF05CBA1694E1780086583F /* SKAssignVarRule.m */,
+				BFD0879716D2E2A7009BB1EB /* SKBreakpointRule.h */,
+				BFD0879816D2E2A9009BB1EB /* SKBreakpointRule.m */,
 				BFF05CB41694DE830086583F /* SKCreateVarRule.h */,
 				BFF05CB51694DE830086583F /* SKCreateVarRule.m */,
 				BF34787B168272700090FBCE /* SKGotoRule.h */,
@@ -321,6 +328,7 @@
 				BFF05CBB1694E1790086583F /* SKAssignVarRule.h in Headers */,
 				BFF05CC6169566820086583F /* SKAssignConstRule.h in Headers */,
 				BFD015F1169B7CC400DCF61D /* SKPushBetweenRule.h in Headers */,
+				BFD0879916D2E2AA009BB1EB /* SKBreakpointRule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +432,7 @@
 				BFF05CBC1694E1790086583F /* SKAssignVarRule.m in Sources */,
 				BFF05CC7169566820086583F /* SKAssignConstRule.m in Sources */,
 				BFD015F2169B7CC400DCF61D /* SKPushBetweenRule.m in Sources */,
+				BFD0879A16D2E2AA009BB1EB /* SKBreakpointRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +457,7 @@
 				BFF05CBD1694E1790086583F /* SKAssignVarRule.m in Sources */,
 				BFF05CC8169566820086583F /* SKAssignConstRule.m in Sources */,
 				BFD015F3169B7CC400DCF61D /* SKPushBetweenRule.m in Sources */,
+				BFD0879B16D2E2AA009BB1EB /* SKBreakpointRule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
