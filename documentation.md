@@ -1,11 +1,11 @@
-# Technical Details #
+# ScrapeKit Documentation #
 
 ## Script Layout ##
 The general layout of a script file can contain the following elements:
 ### Comments ###
 Comments are defined as anything after a `#` character.  Everything after that to the end of the line is ignored.
 
-### Functions / Rules ###
+### Functions ###
 You can define your own functions in a ScrapeKit script by using `@xxxx` where `xxxx` is the name of your function.  Exit of a function occurs when there are no more rules to evaluate.  Some example functions are defined below:
 
 	@myfunc
@@ -47,7 +47,7 @@ ScrapeKit uses a single global variable pool that is available to all functions 
 There several ways data can be stored as variables:
 
 * Saving directly into an `NSString`
-* Adding to a `NSmutableArray`
+* Adding to the end of a `NSMutableArray`
 * Adding to a `NSMutableDictionary`
 * Setting properties on objects using `setValue:forKey:` 
 
@@ -72,9 +72,46 @@ ScrapeKit comes with a number of pre-built rules that should cover most text par
 * `Pop` - Pops a single text buffer off the text stack.
 * `PushBetween` - Searches for a piece of text within other text and pushes it onto the text stack for later processing.
 
+### Error Handling ###
+Every rule returns a `BOOL` indicating success or failure.  You can use the `IfSuccess` and `IfFailure` rules to interrogate the success/failure of the previous rule.  
+
 ## Debugging ##
+### Built-in Logging ###
+ScrapeKit provides some built-in console-based debugging using the `SKConsoleDebugger`.  You can pass the an instance of this class to the `SKEngine` object, and it will output detailed information about each rule as it is evaluated, along with the state of the text stack.
+
+	SKEngine *engine = [[SKEngine alloc] init];
+	[engine setDebugger:[[SKConsoleDebugger alloc] init]];
+
+An example of the output that it provides as as follows:
+
+	...
+	main[iffailure] ---------------------------------------------------
+	main[iffailure] Evaluating last failure (lastSuccess=YES)
+	main[iffailure] Success=YES
+	main[goto] ---------------------------------------------------
+	main[goto] Jumping to "loop"
+	main[goto] Success=YES
+	main[loop] ---------------------------------------------------
+	main[loop] Success=YES
+	main[invoke] ---------------------------------------------------
+	main[invoke] Invoking "handleRow"
+	   > 0 <td>20</td><td>21</td>
+	   > 1 </tr> </table> 
+	  handleRow[createvar] ---------------------------------------------------
+	  handleRow[createvar] Creating variable of type "NSMutableArray" and assigning to cells
+	  handleRow[createvar] Success=YES
+	  handleRow[pushbetween] ---------------------------------------------------
+	  handleRow[pushbetween] Looking between "<td>" and "</td>" in "<td>20</td><td>21</td>"
+	  handleRow[pushbetween] Pushing "20" onto text stack
+	  handleRow[pushbetween] Success=YES
+	...
+
+If the standard debugger doesn't provide sufficient information for you, you can provide your own implementation as long as it conforms to the `SKDebugger` protocol.
+
+### Setting Breakpoints ###
+At development time, it is sometimes useful to be able to set a breakpoint in Xcode4 and inspect the contents of the text stack and the variable pool.  ScrapeKit provides an internal rule called `Break` that is a no-op rule.  However, what you can do, is set a breakpoint on the `return` statement in [SKBreakRule.m](ScrapeKit/Classes/Engine/Rules/SKBreakRule.m) and Xcode will helpfully pause execution when it gets to that point.  You can then inspect the state of your script using LLDB.
 
 ## Writing Custom Rules ##
-
+Further info to come...
 
 

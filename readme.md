@@ -7,30 +7,25 @@ It does this by using a simple text-based language to describe the way text need
 
 ## Underlying Concepts ##
 ### Working Premise ###
-The working premise for ScrapeKit is that, while the format of the input may change over time, the general underlying data model is constant.  
+The working premise for ScrapeKit is that when dealing with scraped data, there are two distinct phases:
 
-For example, if you were scraping, say, a real estate site, you might create a `House` class that has properties such as `address`, `bedrooms`, `bathrooms` and `price`.  When you call ScrapeKit, you can expect to get back a populated `House` object; you don't really have to care whether the scraped site is using `div` or `td` tags.  
+* Extraction of data from an input source 
+* Processing of that data
 
-In this way, your application can be coded against that simple data model (which would **not** be expected to change even if the source input layout changes).  If the input format changes, you just need to update the script, not your whole application.
+If we're able to provide a clearly defined data interface between these two stages, it allows the means of extraction to vary over time without impacting the processing of the data. 
+
+Allow me to present an example… if you were scraping, say, a real estate site, you would be expecting to get back  a collection of `houses`, where each `house` has attributes like `address`, `bedrooms`, `bathrooms` and `price`.  This represents the data interface between the extraction and processing phases.
+
+Just because the layout of the input data changes from, say, `td` tags to `div` tags, it shouldn't mean that your processing phase should need changing.  What it does mean is that your extraction phase needs to be modified to handle the new input, while still producing the original output data model.
+
+ScrapeKit provides the means through which this can easily be achieved.
 
 ### Implementation ###
-ScrapeKit uses a *very* simple [stack based machine](http://en.wikipedia.org/wiki/Stack_machine) and [DSL](http://en.wikipedia.org/wiki/Domain-specific_language) to manage the state of the parsing process.  The ScrapeKit engine walks through a set of *rules*, evaluating each one-by-one. For example:
+ScrapeKit uses a *very* simple [stack based machine](http://en.wikipedia.org/wiki/Stack_machine) and [DSL](http://en.wikipedia.org/wiki/Domain-specific_language) to manage the state of the parsing process.  
 
-	# the following rule pushes text between "XXX" and "YYY"
-	# onto the stack (including the XXX component). For
-	# example, if the input text was:
-	#   Hello there XXX how are you YYY good thanks
-	# the text that would be pushed onto the stack would be:
-	#   "XXX how are you "
-	
-	PushBetween "XXX" include "YYY" exclude
-	
-	# and then the following saves that value into a property
-	# called foo
-	
-	PopInto foo
-
-The ScrapeKit language essentially maintains a cursor that points to some location in the original text.  It allows you to move that cursor back and forward and store pieces of text along the way.
+* The ScrapeKit engine walks through a set of *rules*, evaluating each one-by-one.  
+* Input data for the rules is represented as a *text buffer*, which has an internal cursor that points to a location in the original text.
+* Various rules allow you to move that cursor back/forth within the *text buffer*, create new *text buffers* and push/pop them onto a stack, and save portions of the *text buffer* along the way.
 
 In addition to the existing built-in rules, you can easily add your own custom rules.
 
@@ -43,7 +38,13 @@ A very simple example is as follows.  Imagine that your input looks like:
 		<li>ghi</li>
 	</ol>
 
-To parse this, you might create a script that looks something like:
+To extract out the list items, your general logic would be:
+
+* Create an array to hold the resulting items
+* Look for text between `<li>` and `</li>` tags
+* Repeat whileever there are more tags
+
+A script to achieve this might look something like:
 
 	@main
 		createvar NSMutableArray elements
@@ -59,12 +60,11 @@ To parse this, you might create a script that looks something like:
 And to invoke ScrapeKit to use this script, you would use (assuming ARC):
 
 	NSString *script = ...;
-	NSString *data   = ...;
+	NSString *input  = ...;
 	
 	SKEngine *engine = [[SKEngine alloc] init];
 	[engine compile:script error:nil];
-
-	[engine parse:data];
+	[engine parse:input];
 
 	NSMutableArray *elements = [engine variableFor:@"elements"];
 	for (NSString *element in elements)
@@ -127,17 +127,19 @@ This would result in a script that looks something like:
 And would be invoked using something like the following code:
 
 	NSString *script = ...;
-	NSString *data   = ...;
+	NSString *input  = ...;
 
 	SKEngine *engine = [[SKEngine alloc] init];
 	[engine compile:script error:nil];
 	
-	[engine parse:data];
+	[engine parse:input];
 	
 	NSMutableArray *addresses = [engine variableFor:@"addresses"];
 	for (MyAddress *address in addresses)
 		NSLog(@"%@, %@ %@", [address street], [address city], [address postcode]);
 
+## Awesome Sauce… What Next? ##
+There is some more detailed information on the rules and how you might apply them documented in the [ScrapeKit documentation](documentation.md).
 
 ## When Shouldn't You Use ScrapeKit ##
 Ideally, there shouldn't be a market for ScrapeKit, however, the fact is that scraping data from loosely structured input is still a common scenario.  While ScrapeKit could theoretically be used for the following scenarios, there are far better tools for:
