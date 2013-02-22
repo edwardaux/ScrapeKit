@@ -12,6 +12,9 @@
 
 #define DEBUG_PROP(var, prop) [NSString stringWithFormat:@"%@%@%@", var, prop!=nil?@".":@"", prop!=nil?prop:@""]
 
+// ------------------------------------------------------------------------------------
+// Base class for all rules.  Meant to be abstract.
+// ------------------------------------------------------------------------------------
 @interface SKRule : NSObject
 
 @property (nonatomic, weak) SKFunction *function;

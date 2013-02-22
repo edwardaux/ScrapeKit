@@ -10,6 +10,10 @@
 @class SKFrame;
 @class SKRule;
 
+// ------------------------------------------------------------------------------------
+// If you want to implement your own debugger, you will need to implement this protocol.
+// Your object will be called back as the input data is parsed.
+// ------------------------------------------------------------------------------------
 @protocol SKDebugger
 
 -(void)enteringFunction:(SKFunction *)function textStack:(NSArray *)textStack;
@@ -19,6 +23,9 @@
 
 @end
 
+// ------------------------------------------------------------------------------------
+// Simple console-based debugger.  Just dumps data to the console.
+// ------------------------------------------------------------------------------------
 @interface SKConsoleDebugger : NSObject<SKDebugger> {
 	NSString *_indent;
 }

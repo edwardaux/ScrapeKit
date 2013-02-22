@@ -12,12 +12,43 @@
 @class SKTextBuffer;
 @protocol SKDebugger;
 
+// ------------------------------------------------------------------------------------
+// Coordinates the compilation of the rules, the parsing at runtime, storage of the
+// text buffer stack, and the global variable pool.
+// ------------------------------------------------------------------------------------
 @interface SKEngine : NSObject {
+	/**
+	 * The list of rule implementations that are available for the current script.
+	 *   Key:    NSString (the name of the rule)
+	 *   Value:  Subclass of SKRule (an instance of the rule)
+	 */
 	NSMutableDictionary *_ruleImplementations;
+	
+	/**
+	 * The list of functions in the current script
+	 *   Key:   NSString (the name of the function)
+	 *   Value: SKFunction (the function itself)
+	 */
 	NSMutableDictionary *_functionMap;
+	
+	/**
+	 * LIFO stack maintaining the function call stack during runtime parsing
+	 *   Values:  SKFrame objects
+	 */
 	NSMutableArray      *_frameStack;
 
+	/**
+	 * LIFO stack containing the text buffers as they are pushed/popped by rules 
+	 * during runtime parsing
+	 *   Values:  SKTextBuffer objects
+	 */
 	NSMutableArray      *_textStack;
+	
+	/**
+	 * The global variable pool
+	 *   Key:   NSString (the name of the variable)
+	 *   Value: id (the variable itself)
+	 */
 	NSMutableDictionary *_variablePool;
 }
 

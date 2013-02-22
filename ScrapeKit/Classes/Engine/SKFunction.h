@@ -9,6 +9,10 @@
 @class SKEngine;
 @class SKRule;
 
+// ------------------------------------------------------------------------------------
+// Represents a function that has been defined in a script. At the end of the day, it
+// is really just a container for the function name and the rules in that function.
+// ------------------------------------------------------------------------------------
 @interface SKFunction : NSObject
 
 @property (nonatomic, weak)   SKEngine *engine;
