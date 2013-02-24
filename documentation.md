@@ -1,5 +1,14 @@
 # ScrapeKit Documentation #
 
+## Installation ##
+The recommended installation method is to add ScrapeKit as a git submodule.  
+
+* Open a Terminal window and navigate to the root directory of your project, and and enter the following commands (assuming you want to install in a subdirectory called `Submodules/ScrapeKit`):
+
+		git submodule init
+		git submodule add git://github.com/edwardaux/ScrapeKit.git Submodules/ScrapeKit
+* Add the newly cloned files to your project using the *File/Add Files to…* menu item in Xcode.
+
 ## Script Layout ##
 The general layout of a script file can contain the following elements:
 ### Comments ###
