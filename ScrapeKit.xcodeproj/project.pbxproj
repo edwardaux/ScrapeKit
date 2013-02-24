@@ -119,6 +119,7 @@
 		BFD0879516D2D338009BB1EB /* documentation.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = documentation.md; sourceTree = "<group>"; };
 		BFD0879716D2E2A7009BB1EB /* SKBreakpointRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKBreakpointRule.h; sourceTree = "<group>"; };
 		BFD0879816D2E2A9009BB1EB /* SKBreakpointRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKBreakpointRule.m; sourceTree = "<group>"; };
+		BFD34DDF16DAB5FD00D0DFA6 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		BFD9AD441681A787007F158A /* SKFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKFunction.h; path = Engine/SKFunction.h; sourceTree = "<group>"; };
 		BFD9AD451681A787007F158A /* SKFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKFunction.m; path = Engine/SKFunction.m; sourceTree = "<group>"; };
 		BFD9AD491681A7DC007F158A /* SKEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKEngine.h; sourceTree = "<group>"; };
@@ -195,6 +196,7 @@
 		BF2DCA4D1680FD9700C26D6E = {
 			isa = PBXGroup;
 			children = (
+				BFD34DDF16DAB5FD00D0DFA6 /* LICENSE.txt */,
 				BFD015E7169B77A900DCF61D /* readme.md */,
 				BFD0879516D2D338009BB1EB /* documentation.md */,
 				BFF05CAC169392590086583F /* Warnings.xcconfig */,
