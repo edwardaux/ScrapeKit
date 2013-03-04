@@ -59,6 +59,8 @@ A script to achieve this might look something like:
 
 And to invoke ScrapeKit to use this script, you would use (assuming ARC):
 
+	#import <ScrapeKit/ScrapeKit.h>
+
 	NSString *script = ...;
 	NSString *input  = ...;
 	
@@ -125,6 +127,8 @@ This would result in a script that looks something like:
 		assignvar address addresses
 		
 And would be invoked using something like the following code:
+
+	#import <ScrapeKit/ScrapeKit.h>
 
 	NSString *script = ...;
 	NSString *input  = ...;

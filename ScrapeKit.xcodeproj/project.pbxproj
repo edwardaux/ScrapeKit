@@ -113,6 +113,10 @@
 		BF347897168425820090FBCE /* SKInvokeRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKInvokeRule.m; sourceTree = "<group>"; };
 		BF34789B168427BD0090FBCE /* SKPopRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPopRule.h; sourceTree = "<group>"; };
 		BF34789C168427BD0090FBCE /* SKPopRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPopRule.m; sourceTree = "<group>"; };
+		BF53E85A16E4BF97001CA280 /* AddingScrapeKit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddingScrapeKit.png; sourceTree = "<group>"; };
+		BF53E85B16E4BF97001CA280 /* BuildPhases.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuildPhases.png; sourceTree = "<group>"; };
+		BF53E85C16E4BF97001CA280 /* BuildSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BuildSettings.png; sourceTree = "<group>"; };
+		BF53E85D16E4BF97001CA280 /* Summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Summary.png; sourceTree = "<group>"; };
 		BFD015E7169B77A900DCF61D /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
 		BFD015EF169B7CC400DCF61D /* SKPushBetweenRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPushBetweenRule.h; sourceTree = "<group>"; };
 		BFD015F0169B7CC400DCF61D /* SKPushBetweenRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPushBetweenRule.m; sourceTree = "<group>"; };
@@ -198,9 +202,9 @@
 			children = (
 				BFD34DDF16DAB5FD00D0DFA6 /* LICENSE.txt */,
 				BFD015E7169B77A900DCF61D /* readme.md */,
-				BFD0879516D2D338009BB1EB /* documentation.md */,
 				BFF05CAC169392590086583F /* Warnings.xcconfig */,
 				BF2DCA621680FD9700C26D6E /* ScrapeKit */,
+				BF53E85816E4BF06001CA280 /* Documentation */,
 				BF2DCA5B1680FD9700C26D6E /* Frameworks */,
 				BF2DCA5A1680FD9700C26D6E /* Products */,
 			);
@@ -285,6 +289,26 @@
 				BF2DCA651680FD9700C26D6E /* InfoPlist.strings */,
 			);
 			name = en.lproj;
+			sourceTree = "<group>";
+		};
+		BF53E85816E4BF06001CA280 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				BFD0879516D2D338009BB1EB /* documentation.md */,
+				BF53E85916E4BF79001CA280 /* Screenshots */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
+		BF53E85916E4BF79001CA280 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				BF53E85A16E4BF97001CA280 /* AddingScrapeKit.png */,
+				BF53E85B16E4BF97001CA280 /* BuildPhases.png */,
+				BF53E85C16E4BF97001CA280 /* BuildSettings.png */,
+				BF53E85D16E4BF97001CA280 /* Summary.png */,
+			);
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 		BFD9AD421681A757007F158A /* Engine */ = {

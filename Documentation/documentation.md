@@ -9,24 +9,23 @@ I normally put my 3rd-party projects and submodules into a directory called `Ext
 	git submodule init
 	git submodule add git://github.com/edwardaux/ScrapeKit.git External/ScrapeKit
 
-### Pull ScrapeKit from Repository ###
-The previous commands didn't actually download the ScrapeKit code yet.  Now, run this command:
-
-	git submodule update --init --recursive
-
 ### Make Your Project Aware of ScrapeKit ###
-So, now you have the latest ScrapeKit code inside your project directory.  But Xcode still isn't aware of properly yet.  The first step is to drag the new pulled ScrapeKit.xcodeproj into your project navigator.
+So, now you have the latest ScrapeKit code inside your project directory.  But Xcode still isn't aware of properly yet.  The first step is to drag the newly added `ScrapeKit.xcodeproj` into your project navigator.
 
-TODO screenshot here
+![Adding reference to ScrapeKit project](Screenshots/AddingScrapeKit.png)
+
+Next up, in the *Summary* tab for your target, add ScrapeKit.framework in the *Linked Framework and Libraries* section.
+
+![Adding ScrapeKit into linked framework list](Screenshots/Summary.png)
 
 Then, open the *Build Phases* tab for your target, and add ScrapeKit.framework as a *Target 
 Dependency*.  
 
-TODO screenshot here
+![ScrapeKit needs to be a dependency](Screenshots/BuildPhases.png)
 
-Next up, add ScrapeKit.framework in the *Link Binaries with Libraries* section.
+Lastly, in the *Build Settings*, you will need to add `-ObjC` to the *Other Linker Flags*.
 
-TODO screenshot here
+![Ensuring Objective-C methods are picked up](Screenshots/BuildSettings.png)
 
 And now you should be good to go.  Perform a build.
 
