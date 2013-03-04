@@ -143,7 +143,7 @@ And would be invoked using something like the following code:
 		NSLog(@"%@, %@ %@", [address street], [address city], [address postcode]);
 
 ## Awesome Sauce… What Next? ##
-There is some more detailed information on the rules and how you might apply them documented in the [ScrapeKit documentation](documentation.md).
+There is some more detailed information on the rules and how you might apply them documented in the [ScrapeKit documentation](Documentation/documentation.md).
 
 ## When Shouldn't You Use ScrapeKit ##
 Ideally, there shouldn't be a market for ScrapeKit, however, the fact is that scraping data from loosely structured input is still a common scenario.  While ScrapeKit could theoretically be used for the following scenarios, there are far better tools for:
