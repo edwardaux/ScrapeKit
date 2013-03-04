@@ -1,13 +1,34 @@
 # ScrapeKit Documentation #
 
 ## Installation ##
-The recommended installation method is to add ScrapeKit as a git submodule.  
+The recommended installation method is to add ScrapeKit as a git submodule within your project.  If you're unfamiliar with this technique, follow the steps outlined below.
 
-* Open a Terminal window and navigate to the root directory of your project, and and enter the following commands (assuming you want to install in a subdirectory called `Submodules/ScrapeKit`):
+### Register ScrapeKit as a Submodule ###
+I normally put my 3rd-party projects and submodules into a directory called `External/XXX` where `XXX` is the name of the library.  It doesn't really matter where you put it, though.  Run the following commands from the root of your project.
 
-		git submodule init
-		git submodule add git://github.com/edwardaux/ScrapeKit.git Submodules/ScrapeKit
-* Add the newly cloned files to your project using the *File/Add Files to…* menu item in Xcode.
+	git submodule init
+	git submodule add git://github.com/edwardaux/ScrapeKit.git External/ScrapeKit
+
+### Pull ScrapeKit from Repository ###
+The previous commands didn't actually download the ScrapeKit code yet.  Now, run this command:
+
+	git submodule update --init --recursive
+
+### Make Your Project Aware of ScrapeKit ###
+So, now you have the latest ScrapeKit code inside your project directory.  But Xcode still isn't aware of properly yet.  The first step is to drag the new pulled ScrapeKit.xcodeproj into your project navigator.
+
+TODO screenshot here
+
+Then, open the *Build Phases* tab for your target, and add ScrapeKit.framework as a *Target 
+Dependency*.  
+
+TODO screenshot here
+
+Next up, add ScrapeKit.framework in the *Link Binaries with Libraries* section.
+
+TODO screenshot here
+
+And now you should be good to go.  Perform a build.
 
 ## Script Layout ##
 The general layout of a script file can contain the following elements:
